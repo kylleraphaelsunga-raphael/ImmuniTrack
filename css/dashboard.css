@@ -1,0 +1,287 @@
+/* 
+COLORS TO USE
+Cloud White: #F0EEE9
+Deep Jade: #00684A
+Mint Tint: #D8F3DC
+Persimmon Red: #E63946 
+*/
+
+/* --- Global Styles --- */
+:root {
+    --cloud-white: #F0EEE9;
+    --deep-jade: #00684A;
+    --persimmon-red: #E63946;
+    --dark-footer: #1A1C1E;
+}
+
+body {
+    background-color: var(--cloud-white);
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- HEADER --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.header-left { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+}
+
+.nav-logo { 
+    height: 40px; 
+    width: auto; 
+}
+
+.brand-name { 
+    font-weight: 700; 
+    font-size: 1.5rem; 
+    color: var(--deep-jade); 
+}
+
+.highlight { 
+    color: var(--persimmon-red); 
+}
+
+.header-right { 
+    display: flex; 
+    gap: 2rem; 
+}
+
+.header-right a { 
+    text-decoration: none; 
+    color: #555; 
+    font-weight: 500; 
+    transition: 0.3s; 
+}
+
+.header-right a:hover { 
+    color: var(--persimmon-red); 
+}
+
+/* --- FOOTER --- */
+.main-footer {
+    background: var(--dark-footer);
+    color: white;
+    padding: 1.5rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left .quote { 
+    font-style: italic; 
+    opacity: 0.8; 
+}
+
+.footer-right { 
+    text-align: right; 
+}
+
+.footer-nav { 
+    display: flex; 
+    gap: 1.5rem; 
+    margin-bottom: 5px; 
+    justify-content: flex-end;
+}
+
+.footer-nav a { 
+    color: #ccc; 
+    text-decoration: none; 
+    font-size: 0.9rem; 
+}
+
+.footer-nav a:hover { 
+    color: white; 
+}
+
+.copyright { 
+    font-size: 0.75rem; 
+    opacity: 0.5; 
+    margin: 0; 
+}
+
+/* --- DASHBOARD --- */
+.dashboard-body { 
+    flex: 1; 
+    padding: 2rem 5%; 
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: auto;
+    text-align: center;
+}
+
+.parent > div {
+    background: #FFFFFF;
+    padding: 25px;
+    border-radius: 12px;
+    height: auto;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box; 
+    min-width: 0; 
+}
+
+.parent > div h3 {
+    color: var(--deep-jade);
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.parent > div p {
+    width: 100%;
+    margin-top: 10px;
+    overflow-wrap: break-word; 
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+/* --- DASHBOARD GRID --- */
+.div5 {
+    grid-column: span 2 / span 2;
+    grid-row: span 4 / span 4;
+}
+
+.div6 {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-column-start: 3;
+}
+
+.div7 {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-column-start: 3;
+    grid-row-start: 4;
+}
+
+/* Hide small number-only divs if you prefer cleaner UI,
+   or keep them for placeholders */
+.parent div:not(.div5):not(.div6):not(.div7) {
+    background: rgba(255,255,255,0.4); 
+    font-size: 0.8rem;
+}
+
+/* --- HAMBURGER MENU --- */
+.hamburger {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--deep-jade);
+}
+
+.mobile-menu {
+    display: none;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 768px) {
+
+    /* HEADER & FOOTER */
+    .header-right,
+    .footer-nav {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .mobile-menu {
+        position: fixed;
+        top: 70px;
+        right: 5%;
+        width: 220px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        padding: 1.5rem;
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        z-index: 2000;
+    }
+
+    .mobile-menu a {
+        text-decoration: none;
+        color: var(--deep-jade);
+        font-weight: 500;
+    }
+
+    .mobile-menu hr {
+        border: none;
+        border-top: 1px solid #eee;
+    }
+
+    .mobile-menu.show {
+        display: flex;
+    }
+
+    .mobile-menu a:hover { 
+    color: var(--persimmon-red); 
+}
+    .main-header {
+        position: relative;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .header-right {
+        position: absolute;
+        top: 70px;
+        right: 5%;
+        background: white;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        border-radius: 10px;
+        display: none;
+        width: 200px;
+        z-index: 1000;
+    }
+
+    .header-right.show {
+        display: flex;
+    }
+
+    /* BODY DASHBOARD (CHANGEABLE) */
+    .parent {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        height: auto;
+        gap: 16px;
+        text-align: center;
+    }
+
+    .parent > div {
+        grid-column: auto ;
+        grid-row: auto ;
+        height: 100%;
+    }
+}
