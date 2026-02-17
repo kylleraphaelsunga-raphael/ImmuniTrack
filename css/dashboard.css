@@ -12,6 +12,7 @@ Persimmon Red: #E63946
     --deep-jade: #00684A;
     --persimmon-red: #E63946;
     --dark-footer: #1A1C1E;
+    --mint-tint: #D8F3DC;
 }
 
 body {
@@ -57,6 +58,7 @@ body {
 .header-right { 
     display: flex; 
     gap: 2rem; 
+    align-items: center;
 }
 
 .header-right a { 
@@ -68,6 +70,25 @@ body {
 
 .header-right a:hover { 
     color: var(--persimmon-red); 
+}
+
+/* --- ACCOUNT NAVIGATION HEADER --- */
+.nav-acc {
+    background-color: var(--deep-jade);
+    color: white !important;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight: 600 !important;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 104, 74, 0.1);
+    display: inline-block;
+    text-align: center;
+    margin-left: 5px;
+}
+
+.nav-acc:hover {
+    background-color: var(--persimmon-red);
+    box-shadow: 0 6px 12px rgba(230, 57, 70, 0.2);
 }
 
 /* --- FOOTER --- */
@@ -120,7 +141,7 @@ body {
 
 .parent {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: auto;
     gap: 20px;
     width: 100%;
@@ -160,29 +181,54 @@ body {
 }
 
 /* --- DASHBOARD GRID --- */
-.div5 {
-    grid-column: span 2 / span 2;
-    grid-row: span 4 / span 4;
-}
-
 .div6 {
-    grid-column: span 2 / span 2;
-    grid-row: span 2 / span 2;
-    grid-column-start: 3;
+    grid-column: span 3 / span 3;
+    grid-row: span 4 / span 4;
 }
 
 .div7 {
     grid-column: span 2 / span 2;
     grid-row: span 2 / span 2;
-    grid-column-start: 3;
+    grid-column-start: 4;
+}
+
+.div8 {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-column-start: 4;
     grid-row-start: 4;
 }
 
-/* Hide small number-only divs if you prefer cleaner UI,
-   or keep them for placeholders */
-.parent div:not(.div5):not(.div6):not(.div7) {
+/* 1:2:3:4 lesser color */
+.parent div:not(.div6):not(.div7):not(.div8) {
     background: rgba(255,255,255,0.4); 
     font-size: 0.8rem;
+}
+
+.div7, .div8 {
+    background: white !important;
+    border-left: 5px solid var(--deep-jade);
+    padding: 25px !important;
+    text-align: left !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center;
+}
+
+.div7 h3, .div8 h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    color: var(--deep-jade);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.div7 p, .div8 p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #444;
+    margin: 0;
 }
 
 /* --- HAMBURGER MENU --- */
@@ -283,5 +329,13 @@ body {
         grid-column: auto ;
         grid-row: auto ;
         height: 100%;
+    }
+
+    .news-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .div7, .div8 {
+        padding: 20px !important;
     }
 }
