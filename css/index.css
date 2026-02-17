@@ -6,7 +6,6 @@ Mint Tint: #D8F3DC
 Persimmon Red: #E63946 
 */
 
-/* 2026 Brand Variables */
 :root {
     --cloud-white: #F0EEE9;
     --deep-jade: #00684A;
@@ -24,12 +23,8 @@ Persimmon Red: #E63946
 body {
     font-family: 'Outfit', sans-serif;
     background-color: var(--cloud-white);
-    color: var(--text-dark);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    overflow: hidden;
+    margin: 0;
+    color: #333;
 }
 
 /* 1. index.html */
@@ -38,7 +33,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    min-height: 100vh;
     padding: 20px;
+    background-color: var(--cloud-white);
 }
 
 .entry-card {
@@ -121,5 +119,113 @@ body {
     color: #999;
     letter-spacing: 1px;
 }
-/* 1. index.html */
 
+/* SIGNIN AND SIGNUP */
+.forms-bg {
+    background-color: var(--cloud-white);
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+}
+
+.forms-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.forms-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 30px 40px;
+    border: 1px solid rgba(0, 104, 74, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: var(--deep-jade);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px;
+    border: 1.5px solid #E0E0E0;
+    border-radius: 8px;
+    background: #fdfdfd;
+    font-family: inherit;
+    box-sizing: border-box;
+    transition: 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: var(--deep-jade);
+    outline: none;
+}
+
+.title {
+    color: var(--deep-jade);
+    margin: 20px 0;
+    font-size: 1.8rem;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: var(--deep-jade);
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.link-back {
+    text-decoration: none;
+    color: var(--deep-jade);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.msg-error { 
+    color: var(--persimmon-red); 
+    font-weight: 500; 
+    margin-bottom: 15px; 
+    text-align: center;
+}
+
+.msg-success { 
+    color: var(--deep-jade); 
+    font-weight: 500; 
+    margin-bottom: 15px; 
+}
+
+.switch-text {
+    margin-top: 25px;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.switch-text a {
+    color: var(--deep-jade);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.switch-text a:hover {
+    text-decoration: underline;
+}
