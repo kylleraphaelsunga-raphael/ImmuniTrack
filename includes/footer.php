@@ -4,9 +4,9 @@
     </div>
     <div class="footer-right">
         <nav class="footer-nav">
-            <a href="contact.php">Contact</a>
+            <a href="#">Contact</a>
             <a href="about.php">About Us</a>
-            <a href="privacy.php">Privacy</a>
+            <a href="#">Privacy</a>
         </nav>
         <p class="copyright">&copy; <?php echo date("Y"); ?> ImmuniTrack - WD203</p>
     </div>
