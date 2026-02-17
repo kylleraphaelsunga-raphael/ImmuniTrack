@@ -6,7 +6,7 @@
         <nav class="footer-nav">
             <a href="contact.php">Contact</a>
             <a href="about.php">About Us</a>
-            <a href="#">Privacy</a>
+            <a href="privacy.php">Privacy</a>
         </nav>
         <p class="copyright">&copy; <?php echo date("Y"); ?> ImmuniTrack - WD203</p>
     </div>
