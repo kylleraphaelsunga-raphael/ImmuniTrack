@@ -15,12 +15,12 @@
         <div class="mobile-menu" id="mobileMenu">
             <a href="dashboard.php">Dashboard</a>
             <a href="#">Information</a>
-            <a href="#">Scheduling</a>
-            <a href="#">Settings</a>
+            <a href="signin.php">SignIn</a>
+            <a href="signup.php">SignUp</a>
             <hr>
             <a href="contact.php">Contact</a>
             <a href="about.php">About Us</a>
-            <a href="#">Privacy</a>
+            <a href="privacy.php">Privacy</a>
         </div>
 
         <div class="header-left">
@@ -39,8 +39,8 @@
         <nav class="header-right" id="navMenu">
             <a href="dashboard.php">Dashboard</a>
             <a href="#">Information</a>
-            <a href="#">Scheduling</a>
-            <a href="#">Settings</a>
+            <a href="signin.php" class="nav-acc">SignIn</a>
+            <a href="signup.php" class="nav-acc">SignUp</a>
         </nav>
     </header>
 
