@@ -1,5 +1,11 @@
 <?php
 include "database.php";
+// $_SERVER = superglobal array, stores information about server
+// password_hash = encrypts the password
+// "PASWORD DEFAULT" = use the strongest hasing algorithm
+// $stmt = statement
+// $stmt_profile = another statement
+
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +14,7 @@ include "database.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ImmuniTrack</title>
-    <link rel="stylesheet" href="css/index.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="css/index.css?v=<?php echo time(); ?>"> <!-- current time refresh -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body class="forms-bg">
@@ -17,46 +23,49 @@ include "database.php";
 $message = "";
 $msg_class = "msg-error";
 
+// checks if form submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $email = $_POST["email"];
-    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    $password = password_hash($_POST["password"], PASSWORD_DEFAULT); //excrypts and converts to secure hash
     
-    // Additional Profile Data
+    // additional profile data
     $address = $_POST["address"];
     $contact = "+63" . $_POST["contact"];
     $birthday = $_POST["birthday"];
 
-    // 🔎 CHECK IF USERNAME OR EMAIL EXISTS
+    // check if username/email already exists
     $check = $conn->prepare("SELECT id FROM users WHERE username = ? OR email = ?");
-    $check->bind_param("ss", $username, $email);
+    $check->bind_param("ss", $username, $email); // ss = string username, string email
     $check->execute();
     $check->store_result();
 
+    // check if email exists
     if ($check->num_rows > 0) {
         $message = "Username or Email already exists.";
     } else {
-        // Start Transaction
+        // start transaction
         $conn->begin_transaction();
 
         try {
-            // 1. Insert into 'users' table
+            // insert to 'users' table | immunitrack_db
             $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
             $stmt->bind_param("sss", $username, $email, $password);
             $stmt->execute();
 
-            // 2. Insert into 'user_profiles' table
+            // insert to 'user_profiles' table | | immunitrack_db
             $stmt_profile = $conn->prepare("INSERT INTO user_profiles (user_email, house_address, contact_number, birthday) VALUES (?, ?, ?, ?)");
             $stmt_profile->bind_param("ssss", $email, $address, $contact, $birthday);
             $stmt_profile->execute();
 
-            // If both succeed, commit to database
+            // saves everything
             $conn->commit();
             
+            // if success
             $message = "Registration successful! <a href='signin.php'>Login here</a>";
             $msg_class = "msg-success";
         } catch (Exception $e) {
-            // If any error occurs, undo everything
+            // if any error occurs, undo everything
             $conn->rollback();
             $message = "Something went wrong. Please try again.";
         }
