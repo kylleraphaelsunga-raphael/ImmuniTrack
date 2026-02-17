@@ -1,5 +1,10 @@
 <?php
 include "database.php";
+// $stmt = statement
+// $conn = connection
+// $_POST = data from forms
+// $_SESSION = stores data
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +12,7 @@ include "database.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ImmuniTrack</title>
-    <link rel="stylesheet" href="css/index.css?v=<?php echo time(); ?>"> <!-- -->
+    <link rel="stylesheet" href="css/index.css?v=<?php echo time(); ?>"> <!-- current time refresh -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body class="forms-bg">
@@ -15,7 +20,7 @@ include "database.php";
 <?php
 $message = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check if the privacy checkbox was ticked
+    // Check if the privacy checkbox was checked
     if (!isset($_POST['privacy_consent'])) {
         $message = "Please agree to the Privacy Policy and Terms to continue.";
     } else {
@@ -23,19 +28,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = $_POST["password"];
 
         $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
+        $stmt->bind_param("s", $email); // binds email parameter
+        $stmt->execute(); // executes the query
         $stmt->store_result();
 
+        // check if email exists
         if ($stmt->num_rows > 0) {
-            $stmt->bind_result($id, $username, $hashed_password);
+            $stmt->bind_result($id, $username, $hashed_password); // bind returns values
             $stmt->fetch();
 
+            // verify
             if (password_verify($password, $hashed_password)) {
+                // save user information
                 $_SESSION["user_id"] = $id;
                 $_SESSION["username"] = $username;
                 $_SESSION["user_email"] = $email;
-                header("Location: account_db.php");
+                header("Location: account_db.php"); // goes to account_db page
                 exit();
             } else {
                 $message = "Invalid password.";
@@ -72,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="form-group checkbox-group">
                 <input type="checkbox" name="privacy_consent" id="privacy_consent" required>
                 <label for="privacy_consent">
-                    I have read and understand the <a href="privacy.php" target="" style="color: var(--deep-jade); font-weight: 700;">Privacy Policy</a> of ImmuniTrack.
+                    I have read and understand the <a href="privacy.php">Privacy Policy</a> of ImmuniTrack.
                 </label>
             </div>
             
