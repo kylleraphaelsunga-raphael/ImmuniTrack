@@ -18,9 +18,9 @@
             <a href="signin.php">SignIn</a>
             <a href="signup.php">SignUp</a>
             <hr>
-            <a href="#">Contact</a>
+            <a href="contact.php">Contact</a>
             <a href="about.php">About Us</a>
-            <a href="#">Privacy</a>
+            <a href="privacy.php">Privacy</a>
         </div>
 
         <div class="header-left">
