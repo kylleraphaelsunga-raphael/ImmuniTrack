@@ -1,7 +1,7 @@
 <?php
 include "database.php";
-$css = "dashboard.css"; 
-include 'includes/header.php'; 
+$css = "account_db.css"; 
+include 'includes/account_header.php'; 
 
 if (!isset($_SESSION["user_id"])) {
     header("Location: signin.php");
@@ -15,6 +15,12 @@ $profile_stmt = $conn->prepare("SELECT house_address, contact_number, birthday F
 $profile_stmt->bind_param("s", $user_email);
 $profile_stmt->execute();
 $profile = $profile_stmt->get_result()->fetch_assoc();
+
+// Fetch Vaccination History
+$vax_stmt = $conn->prepare("SELECT vaccine_type, dose_number, vax_date, status FROM vaccination_history WHERE user_email = ? ORDER BY vax_date DESC");
+$vax_stmt->bind_param("s", $user_email);
+$vax_stmt->execute();
+$vax_history = $vax_stmt->get_result();
 ?>
 
 <div class="dashboard-wrapper">
@@ -23,7 +29,7 @@ $profile = $profile_stmt->get_result()->fetch_assoc();
             <h1>Welcome back, <span><?php echo htmlspecialchars($_SESSION["username"]); ?></span></h1>
             <p>Managing records for: <?php echo htmlspecialchars($user_email); ?></p>
         </div>
-        <a href="#" class="btn-primary">+ Add New Record</a>
+        <a href="records.php" class="btn-primary">+ Add New Record</a>
     </header>
 
     <div class="db-content">
@@ -60,33 +66,26 @@ $profile = $profile_stmt->get_result()->fetch_assoc();
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="vax-name">COVID-19</td>
-                                <td><span class="dose-tag">Dose 1</span></td>
-                                <td>September 1, 2020</td>
-                                <td><span class="status-done">Done</span></td>
-                            </tr>
-                            <tr>
-                                <td class="vax-name">Influenza</td>
-                                <td><span class="dose-tag">Annual</span></td>
-                                <td>September 8, 2024</td>
-                                <td><span class="status-done">Done</span></td>
-                            </tr>
-                            <tr>
-                                <td class="vax-name">Dengue</td>
-                                <td><span class="dose-tag">Dose 1</span></td>
-                                <td>December 25, 2025</td>
-                                <td><span class="status-done">Done</span></td>
-                            </tr>
+                            <?php if ($vax_history->num_rows > 0): ?>
+                                <?php while($row = $vax_history->fetch_assoc()): ?>
+                                    <tr>
+                                        <td class="vax-name"><?php echo htmlspecialchars($row['vaccine_type']); ?></td>
+                                        <td><span class="dose-tag">Dose <?php echo $row['dose_number']; ?></span></td>
+                                        <td><?php echo date("F j, Y", strtotime($row['vax_date'])); ?></td>
+                                        <td><span class="status-done">Done</span></td>
+                                    </tr>
+                                <?php endwhile; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="4" class="empty-state">No vaccination records found. Start by adding one!</td>
+                                </tr>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>
             </div>
         </main>
-
-        <a href="logout.php" class="btn-secondary">LogOut</a>
-
     </div>
 </div>
 
-<?php include 'includes/footer.php'; ?>
+<?php include 'includes/account_footer.php'; ?>
