@@ -1,0 +1,291 @@
+/* 
+COLORS TO USE
+Cloud White: #F0EEE9
+Deep Jade: #00684A
+Mint Tint: #D8F3DC
+Persimmon Red: #E63946 
+*/
+
+/* --- Global Styles --- */
+:root {
+    --cloud-white: #F0EEE9;
+    --deep-jade: #00684A;
+    --persimmon-red: #E63946;
+    --dark-footer: #1A1C1E;
+    --mint-tint: #D8F3DC;
+}
+
+body {
+    background-color: var(--cloud-white);
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- HEADER --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.header-left { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+}
+
+.nav-logo { 
+    height: 40px; 
+    width: auto; 
+}
+
+.brand-name { 
+    font-weight: 700; 
+    font-size: 1.5rem; 
+    color: var(--deep-jade); 
+}
+
+.highlight { 
+    color: var(--persimmon-red); 
+}
+
+.header-right { 
+    display: flex; 
+    gap: 2rem; 
+    align-items: center;
+}
+
+.header-right a { 
+    text-decoration: none; 
+    color: #555; 
+    font-weight: 500; 
+    transition: 0.3s; 
+}
+
+.header-right a:hover { 
+    color: var(--persimmon-red); 
+}
+
+/* --- ACCOUNT NAVIGATION HEADER --- */
+.nav-acc {
+    background-color: var(--deep-jade);
+    color: white !important;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight: 600 !important;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 104, 74, 0.1);
+    display: inline-block;
+    text-align: center;
+    margin-left: 5px;
+}
+
+.nav-acc:hover {
+    background-color: var(--persimmon-red);
+    box-shadow: 0 6px 12px rgba(230, 57, 70, 0.2);
+}
+
+/* --- FOOTER --- */
+.main-footer {
+    background: var(--dark-footer);
+    color: white;
+    padding: 1.5rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left .quote { 
+    font-style: italic; 
+    opacity: 0.8; 
+}
+
+.footer-right { 
+    text-align: right; 
+}
+
+.footer-nav { 
+    display: flex; 
+    gap: 1.5rem; 
+    margin-bottom: 5px; 
+    justify-content: flex-end;
+}
+
+.footer-nav a { 
+    color: #ccc; 
+    text-decoration: none; 
+    font-size: 0.9rem; 
+}
+
+.footer-nav a:hover { 
+    color: white; 
+}
+
+.copyright { 
+    font-size: 0.75rem; 
+    opacity: 0.5; 
+    margin: 0; 
+}
+
+/* --- DASHBOARD --- */
+.dashboard-body { 
+    flex: 1; 
+    padding: 2rem 5%; 
+}
+
+/* --- HAMBURGER MENU --- */
+.hamburger {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--deep-jade);
+}
+
+.mobile-menu {
+    display: none;
+}
+
+
+/* Layout Structure */
+.dashboard-wrapper {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.db-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.welcome-text h1 { color: var(--deep-jade); font-size: 2rem; }
+.welcome-text h1 span { color: var(--persimmon-red); }
+.welcome-text p { color: #666; margin-top: 5px; }
+
+.db-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+}
+
+/* Reusable Glass Card */
+.glass-card {
+    background: white;
+    border: 1px solid rgba(0, 104, 74, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+.glass-card h3 {
+    color: var(--deep-jade);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+/* Sidebar Info Styles */
+.info-group { margin-bottom: 15px; }
+.info-group label { font-size: 0.75rem; color: #999; text-transform: uppercase; letter-spacing: 1px; }
+.info-group p { font-weight: 500; color: var(--text-dark); margin-top: 3px; }
+
+/* Table Styles */
+.table-container { overflow-x: auto; }
+.custom-table { width: 100%; border-collapse: collapse; }
+.custom-table th { text-align: left; padding: 15px; background: var(--cloud-white); color: var(--deep-jade); font-size: 0.9rem; }
+.custom-table td { padding: 15px; border-bottom: 1px solid #f0f0f0; }
+
+.vax-name { font-weight: 700; color: var(--deep-jade); }
+.dose-tag { background: var(--mint-tint); padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 500; }
+.status-done { color: #28a745; font-weight: bold; font-size: 0.9rem; }
+
+/* Button Styles */
+.btn-primary { background: var(--deep-jade); color: white; text-decoration: none; padding: 12px 25px; border-radius: 10px; font-weight: 600; transition: 0.3s; }
+.btn-primary:hover { background: var(--persimmon-red); transform: translateY(-2px); }
+
+.btn-secondary { display: block; text-align: center; margin-top: 20px; color: var(--deep-jade); text-decoration: none; font-size: 0.9rem; border: 1px solid var(--deep-jade); padding: 8px; border-radius: 8px; }
+
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 768px) {
+
+    /* HEADER & FOOTER */
+    .header-right,
+    .footer-nav {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .mobile-menu {
+        position: fixed;
+        top: 70px;
+        right: 5%;
+        width: 220px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        padding: 1.5rem;
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        z-index: 2000;
+    }
+
+    .mobile-menu a {
+        text-decoration: none;
+        color: var(--deep-jade);
+        font-weight: 500;
+    }
+
+    .mobile-menu hr {
+        border: none;
+        border-top: 1px solid #eee;
+    }
+
+    .mobile-menu.show {
+        display: flex;
+    }
+
+    .mobile-menu a:hover { 
+    color: var(--persimmon-red); 
+}
+    .main-header {
+        position: relative;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .header-right {
+        position: absolute;
+        top: 70px;
+        right: 5%;
+        background: white;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        border-radius: 10px;
+        display: none;
+        width: 200px;
+        z-index: 1000;
+    }
+
+    .header-right.show {
+        display: flex;
+    }
+
+    .db-content { grid-template-columns: 1fr; }
+    .db-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+}
