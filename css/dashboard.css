@@ -205,6 +205,79 @@ body {
     font-size: 0.8rem;
 }
 
+/* DASHBOARD IMAGE */
+.card {
+    background: #FFFFFF;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 104, 74, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card-img {
+    width: 100%;
+    height: 180px;    
+    object-fit: cover;
+    display: block;
+}
+
+.card-text {
+    padding: 15px;
+    text-align: center;
+}
+
+/* DASHBOARD CONTENT */
+.news-card {
+    background: #ffffff !important;
+    text-align: left !important;
+    border-top: 6px solid var(--deep-jade);
+    display: flex;
+    flex-direction: column;
+    padding: 0 !important;
+}
+
+.news-header {
+    padding: 25px 25px 0 25px;
+}
+
+.news-header h2 {
+    color: var(--deep-jade);
+    margin: 10px 0;
+    font-size: 1.5rem;
+}
+
+.badge {
+    background: var(--mint-tint);
+    color: var(--deep-jade);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.news-content {
+    padding: 10px 25px 25px 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px;
+}
+
+.news-content section h3 {
+    font-size: 1rem;
+    color: var(--deep-jade);
+    margin-bottom: 8px;
+}
+
+.news-content section p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #555;
+    margin: 0;
+}
+
 .div7, .div8 {
     background: white !important;
     border-left: 5px solid var(--deep-jade);
