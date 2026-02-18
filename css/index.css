@@ -194,6 +194,12 @@ body {
     margin-top: 10px;
 }
 
+.btn-submit:hover {
+    background-color: var(--persimmon-red);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(230, 57, 70, 0.3);
+}
+
 .link-back {
     text-decoration: none;
     color: var(--deep-jade);
@@ -228,4 +234,118 @@ body {
 
 .switch-text a:hover {
     text-decoration: underline;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--deep-jade);
+    margin-top: 3px;
+}
+
+.checkbox-group label {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #555;
+    cursor: pointer;
+}
+
+.checkbox-group label a {
+    color: var(--deep-jade);
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.checkbox-group label a:hover {
+    color: var(--persimmon-red);
+    text-decoration: underline;
+}
+
+/* --- RECORDS.PHP --- */
+.forms-card h3 {
+    color: var(--deep-jade);
+    font-size: 1.2rem;
+    margin: 1.5rem 0 1rem 0;
+    border-left: 4px solid var(--persimmon-red);
+    padding-left: 10px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: rgba(0, 104, 74, 0.1);
+    margin: 2rem 0;
+}
+
+/* Contact Number Group with +63 Prefix */
+.contact-group {
+    display: flex;
+    align-items: stretch;
+}
+
+.prefix {
+    background-color: var(--mint-tint);
+    color: var(--deep-jade);
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    border: 1.5px solid #E0E0E0;
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    font-size: 0.9rem;
+}
+
+.contact-group input {
+    border-radius: 0 8px 8px 0 !important;
+}
+
+/* Dropdown / Select Styling */
+.form-group select {
+    width: 100%;
+    padding: 14px;
+    border: 1.5px solid #E0E0E0;
+    border-radius: 8px;
+    background: #fdfdfd;
+    font-family: inherit;
+    color: #333;
+    appearance: none; /* Removes default arrow to style our own if needed */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300684A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    cursor: pointer;
+}
+
+.form-group select:focus {
+    border-color: var(--deep-jade);
+    outline: none;
+}
+
+/* Dynamic Date Section Animation */
+#date_inputs_container .form-group {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Responsive adjustments for the contact field */
+@media (max-width: 400px) {
+    .prefix {
+        padding: 0 10px;
+        font-size: 0.8rem;
+    }
 }
