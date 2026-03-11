@@ -23,11 +23,15 @@ Persimmon Red: #E63946
 body {
     font-family: 'Outfit', sans-serif;
     background-color: var(--cloud-white);
+    background-image: radial-gradient(circle, rgba(0,104,74,0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
     margin: 0;
     color: #333;
 }
 
-/* 1. index.html */
+/* ================================
+   LANDING PAGE (index.php)
+================================ */
 .landing-container {
     width: 100%;
     display: flex;
@@ -37,39 +41,70 @@ body {
     min-height: 100vh;
     padding: 20px;
     background-color: var(--cloud-white);
+    background-image: radial-gradient(circle, rgba(0,104,74,0.08) 1px, transparent 1px);
+    background-size: 28px 28px;
+}
+
+.entry-card-wrapper {
+    position: relative;
+    padding: 2px;
+    border-radius: 28px;
+    background: linear-gradient(
+        135deg,
+        var(--deep-jade),
+        var(--persimmon-red),
+        var(--deep-jade),
+        var(--persimmon-red)
+    );
+    box-shadow:
+        0 8px 32px rgba(0,0,0,0.08),
+        0 1px 2px rgba(0,0,0,0.04);
+    max-width: 480px;
+    width: 100%;
+    animation: fadeIn 0.8s ease-out;
 }
 
 .entry-card {
-    background: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 3rem;
-    border-radius: 32px;
+    background: white;
+    padding: 3.5rem;
+    border-radius: 26px;
     text-align: center;
-    box-shadow: 0 20px 40px rgba(0, 104, 74, 0.05);
-    max-width: 500px;
     width: 100%;
-    animation: fadeIn 1s ease-out;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Remove the ::before entirely */
+.entry-card::before {
+    display: none;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 .logo-wrapper {
-    margin-bottom: 2rem;
+    margin-bottom: 1.8rem;
 }
 
 .main-logo {
-    max-width: 180px;
+    max-width: 72px;
     height: auto;
+    border-radius: 18px;
+    box-shadow:
+        0 4px 16px rgba(0,104,74,0.18),
+        0 0 0 4px rgba(0,104,74,0.06);
 }
 
 .tagline {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     font-weight: 700;
     color: var(--deep-jade);
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.6px;
+    line-height: 1.1;
 }
 
 .highlight {
@@ -77,10 +112,13 @@ body {
 }
 
 .description {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 2.5rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #aaa;
+    margin-bottom: 2.2rem;
+    max-width: 340px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .continue-btn {
@@ -90,39 +128,52 @@ body {
     background-color: var(--deep-jade);
     color: white;
     text-decoration: none;
-    padding: 1.2rem 2.5rem;
+    padding: 1rem 2.4rem;
     border-radius: 100px;
     font-weight: 600;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 20px rgba(0, 104, 74, 0.2);
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 6px 20px rgba(0, 104, 74, 0.25), inset 0 1px 0 rgba(255,255,255,0.1);
+    gap: 10px;
 }
 
 .continue-btn:hover {
     background-color: var(--persimmon-red);
-    transform: translateY(-3px);
-    box-shadow: 0 15px 25px rgba(230, 57, 70, 0.3);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 14px 28px rgba(230, 57, 70, 0.28);
 }
 
 .arrow {
-    margin-left: 10px;
     transition: transform 0.3s ease;
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
 }
 
 .continue-btn:hover .arrow {
-    transform: translateX(5px);
+    transform: translateX(4px);
 }
 
 .minimal-footer {
-    margin-top: 3rem;
-    font-size: 0.8rem;
-    color: #999;
-    letter-spacing: 1px;
+    margin-top: 2.5rem;
+    font-size: 0.75rem;
+    color: #bbb;
+    letter-spacing: 0.5px;
 }
 
-/* SIGNIN AND SIGNUP */
+/* ================================
+   FORMS BG (signin, signup, records, edit_profile)
+================================ */
 .forms-bg {
     background-color: var(--cloud-white);
+    background-image: radial-gradient(circle, rgba(0,104,74,0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
     font-family: 'Outfit', sans-serif;
     margin: 0;
 }
@@ -132,20 +183,58 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
+    padding: 40px 20px;
 }
 
 .forms-card {
-    background: #FFFFFF;
-    border-radius: 16px;
-    padding: 30px 40px;
-    border: 1px solid rgba(0, 104, 74, 0.15);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    background: white;
+    border-radius: 20px;
+    padding: 36px 40px;
+    border: 1px solid rgba(0, 104, 74, 0.1);
+    box-shadow:
+        0 1px 2px rgba(0,0,0,0.04),
+        0 8px 24px rgba(0,0,0,0.07),
+        0 0 0 1px rgba(0,104,74,0.04);
     width: 100%;
     max-width: 500px;
     box-sizing: border-box;
+    animation: fadeIn 0.6s ease-out;
 }
 
+.forms-card-wrapper {
+    position: relative;
+    padding: 2px;
+    border-radius: 22px;
+    background: linear-gradient(
+        135deg,
+        var(--deep-jade),
+        var(--persimmon-red),
+        var(--deep-jade),
+        var(--persimmon-red)
+    );
+    box-shadow:
+        0 8px 32px rgba(0,0,0,0.08),
+        0 1px 2px rgba(0,0,0,0.04);
+    max-width: 500px;
+    width: 100%;
+    animation: fadeIn 0.6s ease-out both;
+}
+
+.forms-card {
+    background: white;
+    padding: 36px 40px;
+    border-radius: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    box-shadow: none;
+}
+
+/* ================================
+   FORM ELEMENTS
+================================ */
 .form-group {
     width: 100%;
     margin-bottom: 1.2rem;
@@ -154,30 +243,41 @@ body {
 .form-group label {
     display: block;
     font-weight: 500;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
     color: var(--deep-jade);
+    font-size: 0.9rem;
 }
 
 .form-group input {
     width: 100%;
-    padding: 14px;
-    border: 1.5px solid #E0E0E0;
-    border-radius: 8px;
+    padding: 13px 16px;
+    border: 1.5px solid #E8E8E8;
+    border-radius: 10px;
     background: #fdfdfd;
     font-family: inherit;
+    font-size: 0.95rem;
     box-sizing: border-box;
-    transition: 0.3s ease;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    color: var(--text-dark);
 }
 
 .form-group input:focus {
     border-color: var(--deep-jade);
     outline: none;
+    box-shadow: 0 0 0 3px rgba(0,104,74,0.08);
+}
+
+.form-group input::placeholder {
+    color: #c0c0c0;
+    font-size: 0.88rem;
 }
 
 .title {
     color: var(--deep-jade);
-    margin: 20px 0;
+    margin: 16px 0 24px;
     font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.4px;
 }
 
 .btn-submit {
@@ -186,108 +286,152 @@ body {
     color: white;
     padding: 14px;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s;
     margin-top: 10px;
+    font-family: inherit;
+    box-shadow: 0 4px 14px rgba(0,104,74,0.2);
 }
 
 .btn-submit:hover {
     background-color: var(--persimmon-red);
-    transform: translateY(-3px);
-    box-shadow: 0 15px 25px rgba(230, 57, 70, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(230, 57, 70, 0.25);
 }
 
 .link-back {
     text-decoration: none;
-    color: var(--deep-jade);
-    font-size: 0.9rem;
+    color: #999;
+    font-size: 0.85rem;
     font-weight: 500;
+    transition: color 0.2s;
+    display: inline-block;
+    margin-bottom: 4px;
 }
 
-.msg-error { 
-    color: var(--persimmon-red); 
-    font-weight: 500; 
-    margin-bottom: 15px; 
-    text-align: center;
+.link-back:hover {
+    color: var(--deep-jade);
 }
 
-.msg-success { 
-    color: var(--deep-jade); 
-    font-weight: 500; 
-    margin-bottom: 15px; 
+.msg-error {
+    background: #fde8ea;
+    color: var(--persimmon-red);
+    font-weight: 500;
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    border-left: 3px solid var(--persimmon-red);
+}
+
+.msg-success {
+    background: var(--mint-tint);
+    color: var(--deep-jade);
+    font-weight: 500;
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    border-left: 3px solid var(--deep-jade);
 }
 
 .switch-text {
-    margin-top: 25px;
-    font-size: 0.95rem;
-    color: #555;
+    margin-top: 22px;
+    font-size: 0.9rem;
+    color: #888;
+    text-align: center;
 }
 
 .switch-text a {
     color: var(--deep-jade);
     font-weight: 700;
     text-decoration: none;
+    transition: color 0.2s;
 }
 
 .switch-text a:hover {
-    text-decoration: underline;
+    color: var(--persimmon-red);
 }
 
+/* ================================
+   CHECKBOX (signin)
+================================ */
 .checkbox-group {
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    margin-top: 15px;
-    margin-bottom: 20px;
+    margin-top: 12px;
+    margin-bottom: 16px;
 }
 
 .checkbox-group input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
+    width: 17px;
+    height: 17px;
     cursor: pointer;
     accent-color: var(--deep-jade);
     margin-top: 3px;
+    flex-shrink: 0;
 }
 
 .checkbox-group label {
-    font-size: 0.85rem;
-    line-height: 1.4;
-    color: #555;
+    font-size: 0.84rem;
+    line-height: 1.5;
+    color: #777;
     cursor: pointer;
+    font-weight: 400;
+    margin-bottom: 0;
 }
 
 .checkbox-group label a {
     color: var(--deep-jade);
-    font-weight: 700;
+    font-weight: 600;
     text-decoration: none;
-    transition: 0.3s;
+    transition: color 0.2s;
 }
 
 .checkbox-group label a:hover {
     color: var(--persimmon-red);
-    text-decoration: underline;
 }
 
-/* --- RECORDS.PHP --- */
-.forms-card h3 {
+/* ================================
+   FORM SECTION TITLES (edit_profile, records)
+================================ */
+.form-section-title {
     color: var(--deep-jade);
-    font-size: 1.2rem;
-    margin: 1.5rem 0 1rem 0;
-    border-left: 4px solid var(--persimmon-red);
-    padding-left: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 24px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+    letter-spacing: 0.2px;
+}
+
+.form-hint {
+    font-size: 0.83rem;
+    color: #aaa;
+    margin-bottom: 4px;
+    line-height: 1.5;
+}
+
+.label-optional {
+    font-size: 0.78rem;
+    color: #bbb;
+    font-weight: 400;
 }
 
 hr {
     border: 0;
     height: 1px;
-    background: rgba(0, 104, 74, 0.1);
+    background: rgba(0, 104, 74, 0.08);
     margin: 2rem 0;
 }
 
-/* Contact Number Group with +63 Prefix */
+/* ================================
+   CONTACT NUMBER GROUP (edit_profile)
+================================ */
 .contact-group {
     display: flex;
     align-items: stretch;
@@ -296,56 +440,74 @@ hr {
 .prefix {
     background-color: var(--mint-tint);
     color: var(--deep-jade);
-    padding: 0 15px;
+    padding: 0 14px;
     display: flex;
     align-items: center;
     font-weight: 700;
-    border: 1.5px solid #E0E0E0;
+    border: 1.5px solid #E8E8E8;
     border-right: none;
-    border-radius: 8px 0 0 8px;
+    border-radius: 10px 0 0 10px;
     font-size: 0.9rem;
 }
 
 .contact-group input {
-    border-radius: 0 8px 8px 0 !important;
+    border-radius: 0 10px 10px 0 !important;
 }
 
-/* Dropdown / Select Styling */
+/* ================================
+   SELECT DROPDOWNS
+================================ */
 .form-group select {
     width: 100%;
-    padding: 14px;
-    border: 1.5px solid #E0E0E0;
-    border-radius: 8px;
+    padding: 13px 16px;
+    border: 1.5px solid #E8E8E8;
+    border-radius: 10px;
     background: #fdfdfd;
     font-family: inherit;
+    font-size: 0.95rem;
     color: #333;
-    appearance: none; /* Removes default arrow to style our own if needed */
+    appearance: none;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300684A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right 1rem center;
     background-size: 1em;
     cursor: pointer;
+    transition: border-color 0.25s, box-shadow 0.25s;
 }
 
 .form-group select:focus {
     border-color: var(--deep-jade);
     outline: none;
+    box-shadow: 0 0 0 3px rgba(0,104,74,0.08);
 }
 
-/* Dynamic Date Section Animation */
+/* ================================
+   SLIDE IN ANIMATION (records)
+================================ */
 #date_inputs_container .form-group {
     animation: slideIn 0.3s ease-out;
 }
 
 @keyframes slideIn {
     from { opacity: 0; transform: translateX(-10px); }
-    to { opacity: 1; transform: translateX(0); }
+    to   { opacity: 1; transform: translateX(0); }
 }
 
-/* Responsive adjustments for the contact field */
-@media (max-width: 400px) {
+/* ================================
+   MOBILE
+================================ */
+@media (max-width: 480px) {
+    .forms-card {
+        padding: 28px 22px;
+        border-radius: 16px;
+    }
+
     .prefix {
         padding: 0 10px;
-        font-size: 0.8rem;
+        font-size: 0.82rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
     }
 }
