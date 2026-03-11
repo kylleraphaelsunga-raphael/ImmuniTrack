@@ -1,43 +1,53 @@
-<?php 
-    $css = "dashboard.css"; 
-    include 'includes/header.php'; 
+<?php
+$css = "dashboard.css";
+include 'includes/header.php';
 ?>
 
 <main class="dashboard-body">
     <div class="parent">
-        <div class="div1 card">
-            <img src="images/covid.png" alt="covid" class="card-img">
-            <div class="card-text">
-                <h3>COVID-19 VACCINES</h3>
-            </div>
+       <div class="div1 card">
+            <a href="information.php?disease=covid">
+                <img src="images/covid.png" alt="covid" class="card-img">
+                <div class="card-text">
+                    <h3>COVID-19 VACCINES</h3>
+                </div>
+            </a>
         </div>
 
         <div class="div2 card">
-            <img src="images/influenza.webp" alt="flu shots" class="card-img">
-            <div class="card-text">
-                <h3>INFLUENZA VACCINES</h3>
-            </div>
+            <a href="information.php?disease=flu">
+                <img src="images/influenza.webp" alt="flu shots" class="card-img">
+                <div class="card-text">
+                    <h3>INFLUENZA VACCINES</h3>
+                </div>
+            </a>
         </div>
 
         <div class="div3 card">
-            <img src="images/chickenpox.webp" alt="chickenpox3" class="card-img">
-            <div class="card-text">
-                <h3>CHICKENPOX VACCINES</h3>
-            </div>
+            <a href="information.php?disease=chickenpox">
+                <img src="images/chickenpox.webp" alt="chickenpox" class="card-img">
+                <div class="card-text">
+                    <h3>CHICKENPOX VACCINES</h3>
+                </div>
+            </a>
         </div>
 
         <div class="div4 card">
-            <img src="images/dengue.jpg" alt="dengue" class="card-img">
-            <div class="card-text">
-                <h3>DENGUE VACCINES</h3>
-            </div>
+            <a href="information.php?disease=dengue">
+                <img src="images/dengue.jpg" alt="dengue" class="card-img">
+                <div class="card-text">
+                    <h3>DENGUE VACCINES</h3>
+                </div>
+            </a>
         </div>
 
         <div class="div5 card">
-            <img src="images/rabies.webp" alt="rabies" class="card-img">
-            <div class="card-text">
-                <h3>ANTI-RABIES VACCINES</h3>
-            </div>
+            <a href="information.php?disease=rabies">
+                <img src="images/rabies.webp" alt="rabies" class="card-img">
+                <div class="card-text">
+                    <h3>ANTI-RABIES VACCINES</h3>
+                </div>
+            </a>
         </div>
 
         <div class="div6 card news-card">
@@ -45,7 +55,7 @@
                 <span class="badge">Health Education</span>
                 <h2>Public Health & Immunization</h2>
             </div>
-            
+
             <div class="news-content">
                 <section>
                     <h3>🛡 Why Vaccination Matters</h3>
