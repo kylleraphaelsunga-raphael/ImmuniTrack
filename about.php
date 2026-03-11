@@ -5,6 +5,107 @@
 
 <main class="about-body">
 
+    <!-- ========== CREATORS SECTION ========== -->
+    <div class="creators-section">
+        <div class="creators-header">
+            <span class="badge">The Team</span>
+            <h2>Meet the Creators</h2>
+            <p>The people behind ImmuniTrack — built as a project requirement for DWEB.</p>
+        </div>
+
+        <div class="creators-grid">
+            <div class="creator-card">
+                <div class="creator-img-wrapper">
+                    <img src="images/Endaya.jpg" alt="Creator 1" class="creator-img">
+                    <div class="creator-img-fallback">👤</div>
+                </div>
+                <div class="creator-info">
+                    <h3 class="creator-name">Endaya, Adrienne D.</h3>
+                    <span class="creator-role">LEAD DEVELOPER</span>
+                    <p class="creator-motto">"If you can’t fight the fear, do it scared"</p>
+                    <div class="creator-socials">
+                        <a href="https://www.facebook.com/endaya.adrienne" class="social-btn" target="_blank">
+                            <span class="social-icon">f</span>
+                            <span class="social-label">Facebook</span>
+                        </a>
+                        <a href="https://mail.google.com/mail/?view=cm&to=adendaya@student.hau.edu.ph" class="social-btn" target="_blank">
+                            <span class="social-icon">@</span>
+                            <span class="social-label">Email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+             <div class="creator-card">
+                <div class="creator-img-wrapper">
+                    <img src="images/Mendoza.jpg" alt="Creator 1" class="creator-img">
+                    <div class="creator-img-fallback">👤</div>
+                </div>
+                <div class="creator-info">
+                    <h3 class="creator-name">Mendoza, Franshin</h3>
+                    <span class="creator-role">UI/UX DESIGNER</span>
+                    <p class="creator-motto">"If you're tired of starting over, stop giving up."</p>
+                    <div class="creator-socials">
+                        <a href="https://www.facebook.com/franshin.mendoza.2024" class="social-btn" target="_blank">
+                            <span class="social-icon">f</span>
+                            <span class="social-label">Facebook</span>
+                        </a>
+                        <a href="https://mail.google.com/mail/?view=cm&to=fmendoza@student.hau.edu.ph" class="social-btn" target="_blank">
+                            <span class="social-icon">@</span>
+                            <span class="social-label">Email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+             <div class="creator-card">
+                <div class="creator-img-wrapper">
+                    <img src="images/Mercado.jpg" alt="Creator 1" class="creator-img">
+                    <div class="creator-img-fallback">👤</div>
+                </div>
+                <div class="creator-info">
+                    <h3 class="creator-name">Mercado, Justine Lee B.</h3>
+                    <span class="creator-role">BACKEND DEVELOPER</span>
+                    <p class="creator-motto">"Keep going, even when things get hard. Every step forward is progress."</p>
+                    <div class="creator-socials">
+                        <a href="https://www.facebook.com/lee.mercado.397" class="social-btn" target="_blank">
+                            <span class="social-icon">f</span>
+                            <span class="social-label">Facebook</span>
+                        </a>
+                        <a href="https://mail.google.com/mail/?view=cm&to=jbmercado2@student.hau.edu.ph" class="social-btn" target="_blank">
+                            <span class="social-icon">@</span>
+                            <span class="social-label">Email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="creator-card">
+                <div class="creator-img-wrapper">
+                    <img src="images/Sunga.jpg" alt="Creator 4" class="creator-img">
+                    <div class="creator-img-fallback">👤</div>
+                </div>
+                <div class="creator-info">
+                    <h3 class="creator-name">Sunga, Kylle Raphael Y. </h3>
+                    <span class="creator-role">DATABASE ADMINISTRATOR</span>
+                    <p class="creator-motto">"Everything happens for a reason, so let go and let God"</p>
+                    <div class="creator-socials">
+                        <a href="https://www.facebook.com/kyllesunga/" class="social-btn" target="_blank">
+                            <span class="social-icon">f</span>
+                            <span class="social-label">Facebook</span>
+                        </a>
+                        <a href="https://mail.google.com/mail/?view=cm&to=kysunga1@student.hau.edu.ph" class="social-btn" target="_blank">
+                            <span class="social-icon">@</span>
+                            <span class="social-label">Email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ========== ABOUT CONTENT ========== -->
     <div class="parent">
 
         <div class="div1 card">
@@ -18,14 +119,13 @@
             </p>
         </div>
 
-
         <div class="div2 card">
             <h1>Our Mission and Vision</h1>
             <p>
                 Our mission is to provide small clinics with a simple and efficient tool for managing vaccination records, reducing errors, and ensuring that important health data is safe and easily accessible. 
                 Our vision is a community where everyone can track and maintain their vaccination history digitally, improving public health awareness and readiness.
             </p>
-
+</br>
             <h1>Why Choose ImmuniTrack</h1>
             <p>
                 ImmuniTrack is designed specifically for small community clinics, focusing on practicality and ease of use. 
