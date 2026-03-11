@@ -24,6 +24,7 @@ body {
     min-height: 100vh;
 }
 
+
 /* --- HEADER --- */
 .main-header {
     display: flex;
@@ -31,7 +32,12 @@ body {
     align-items: center;
     padding: 1rem 5%;
     background: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 
+        0 1px 0 rgba(0,0,0,0.06),
+        0 4px 20px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .header-left { 
@@ -80,7 +86,9 @@ body {
     border-radius: 8px;
     font-weight: 600 !important;
     transition: 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 104, 74, 0.1);
+    box-shadow: 
+        0 4px 6px rgba(0, 104, 74, 0.15),
+        0 1px 3px rgba(0, 104, 74, 0.1);
     display: inline-block;
     text-align: center;
     margin-left: 5px;
@@ -88,7 +96,10 @@ body {
 
 .nav-acc:hover {
     background-color: var(--persimmon-red);
-    box-shadow: 0 6px 12px rgba(230, 57, 70, 0.2);
+    box-shadow: 
+        0 6px 16px rgba(230, 57, 70, 0.25),
+        0 2px 6px rgba(230, 57, 70, 0.15);
+    transform: translateY(-1px);
 }
 
 /* --- FOOTER --- */
@@ -121,6 +132,7 @@ body {
     color: #ccc; 
     text-decoration: none; 
     font-size: 0.9rem; 
+    transition: color 0.2s;
 }
 
 .footer-nav a:hover { 
@@ -199,21 +211,33 @@ body {
     grid-row-start: 4;
 }
 
-/* 1:2:3:4 lesser color */
+/* Small vaccine cards */
 .parent div:not(.div6):not(.div7):not(.div8) {
     background: rgba(255,255,255,0.4); 
     font-size: 0.8rem;
 }
 
-/* DASHBOARD IMAGE */
+/* DASHBOARD IMAGE CARD */
 .card {
     background: #FFFFFF;
     border-radius: 12px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    border: 1px solid rgba(0, 104, 74, 0.1);
-    transition: transform 0.3s ease;
+    border: 1px solid rgba(0, 104, 74, 0.08);
+    box-shadow:
+        0 1px 2px rgba(0,0,0,0.04),
+        0 4px 12px rgba(0,0,0,0.05),
+        0 0 0 1px rgba(0,104,74,0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 2px 4px rgba(0,0,0,0.04),
+        0 12px 28px rgba(0,104,74,0.12),
+        0 0 0 1px rgba(0,104,74,0.08);
 }
 
 .card-img {
@@ -228,14 +252,87 @@ body {
     text-align: center;
 }
 
+.card a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease, filter 0.3s ease;
+}
+
+.card:hover .card-img {
+    transform: scale(1.06);
+    filter: brightness(0.88);
+}
+
+.card-text {
+    padding: 15px;
+    text-align: center;
+    position: relative;
+}
+
+.card-text::after {
+    content: 'View Info →';
+    display: block;
+    font-size: 0.72rem;
+    color: var(--persimmon-red);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover .card-text::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card:hover h3 {
+    color: var(--persimmon-red);
+    transition: color 0.3s ease;
+}
+
+.card {
+    background: #FFFFFF;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 104, 74, 0.08);
+    box-shadow:
+        0 1px 2px rgba(0,0,0,0.04),
+        0 4px 12px rgba(0,0,0,0.05),
+        0 0 0 1px rgba(0,104,74,0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
 /* DASHBOARD CONTENT */
 .news-card {
     background: #ffffff !important;
     text-align: left !important;
-    border-top: 6px solid var(--deep-jade);
+    border-top: 5px solid var(--deep-jade);
     display: flex;
     flex-direction: column;
     padding: 0 !important;
+    box-shadow:
+        0 1px 2px rgba(0,0,0,0.04),
+        0 8px 24px rgba(0,0,0,0.06),
+        0 0 0 1px rgba(0,104,74,0.06) !important;
+}
+
+.news-card:hover {
+    transform: none !important;
 }
 
 .news-header {
@@ -256,6 +353,7 @@ body {
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .news-content {
@@ -263,6 +361,13 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr; 
     gap: 20px;
+}
+
+.news-content section {
+    padding: 16px;
+    border-radius: 10px;
+    background: var(--cloud-white);
+    border: 1px solid rgba(0,104,74,0.07);
 }
 
 .news-content section h3 {
@@ -286,6 +391,19 @@ body {
     display: flex !important;
     flex-direction: column !important;
     justify-content: center;
+    box-shadow:
+        0 1px 2px rgba(0,0,0,0.04),
+        0 8px 24px rgba(0,0,0,0.06),
+        0 0 0 1px rgba(0,104,74,0.06) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.div7:hover, .div8:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 2px 4px rgba(0,0,0,0.04),
+        0 16px 32px rgba(0,104,74,0.1),
+        0 0 0 1px rgba(0,104,74,0.1) !important;
 }
 
 .div7 h3, .div8 h3 {
@@ -304,6 +422,355 @@ body {
     margin: 0;
 }
 
+/* ================================
+   INFORMATION PAGE - ImmuniTrack
+   information.css
+================================ */
+
+/* --- Disease Nav Pills --- */
+.disease-nav {
+    background: white;
+    border-bottom: 1px solid rgba(0,104,74,0.08);
+    padding: 12px 5%;
+    position: sticky;
+    top: 70px;
+    z-index: 90;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+
+.disease-nav-inner {
+    display: flex;
+    gap: 8px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.disease-pill {
+    text-decoration: none;
+    padding: 7px 18px;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #777;
+    border: 1.5px solid #e8e8e8;
+    background: white;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.disease-pill:hover {
+    color: var(--deep-jade);
+    border-color: var(--deep-jade);
+    background: rgba(0,104,74,0.04);
+}
+
+.disease-pill.active {
+    background: var(--deep-jade);
+    color: white;
+    border-color: var(--deep-jade);
+    box-shadow: 0 4px 12px rgba(0,104,74,0.2);
+}
+
+/* --- Page Container --- */
+.info-page {
+    max-width: 1200px;
+    margin: 36px auto;
+    padding: 0 5% 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* ================================
+   HERO CARD
+================================ */
+.info-hero-card {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(0,104,74,0.08);
+    box-shadow:
+        0 1px 2px rgba(0,0,0,0.04),
+        0 8px 28px rgba(0,0,0,0.07),
+        0 0 0 1px rgba(0,104,74,0.04);
+    animation: fadeUp 0.6s ease-out both;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Hero Image --- */
+.info-hero-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.info-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.info-hero-card:hover .info-hero-image img {
+    transform: scale(1.04);
+}
+
+.info-hero-image-overlay {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+}
+
+.info-disease-tag {
+    background: rgba(0,0,0,0.55);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 100px;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(4px);
+}
+
+/* --- Hero Content --- */
+.info-hero-content {
+    padding: 32px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.info-hero-top {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--deep-jade);
+    letter-spacing: -0.5px;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.info-description {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: #777;
+    margin: 0;
+}
+
+/* --- Stats Row --- */
+.info-stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.info-stat-box {
+    background: var(--cloud-white);
+    border: 1px solid rgba(0,104,74,0.08);
+    border-radius: 12px;
+    padding: 14px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.info-stat-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,104,74,0.1);
+}
+
+.info-stat-icon {
+    font-size: 1.3rem;
+}
+
+.info-stat-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--deep-jade);
+    line-height: 1;
+}
+
+.info-stat-label {
+    font-size: 0.65rem;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 600;
+}
+
+/* --- Quick Facts --- */
+.info-section-mini-title {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #bbb;
+    font-weight: 700;
+    margin: 0 0 10px;
+}
+
+.info-facts-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.info-facts-list li {
+    font-size: 0.86rem;
+    color: #555;
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.5;
+}
+
+.info-facts-list li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--deep-jade);
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+/* --- Brands --- */
+.info-brand-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.info-brand-pill {
+    background: var(--mint-tint);
+    color: var(--deep-jade);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 100px;
+    letter-spacing: 0.3px;
+}
+
+/* ================================
+   BOTTOM CARDS GRID
+================================ */
+.info-bottom-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    animation: fadeUp 0.7s ease-out 0.15s both;
+}
+
+/* --- Detail Card --- */
+.info-detail-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(0,104,74,0.07);
+    box-shadow:
+        0 1px 2px rgba(0,0,0,0.04),
+        0 6px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-detail-card:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 2px 4px rgba(0,0,0,0.04),
+        0 16px 32px rgba(0,104,74,0.1);
+}
+
+/* Card header accent colors */
+.symptoms-card    .info-detail-card-header { background: linear-gradient(135deg, #fff5f5, #fff); border-bottom: 3px solid #E63946; }
+.sideeffects-card .info-detail-card-header { background: linear-gradient(135deg, #fffbf0, #fff); border-bottom: 3px solid #F59E0B; }
+.whoshould-card   .info-detail-card-header { background: linear-gradient(135deg, #f0fdf4, #fff); border-bottom: 3px solid var(--deep-jade); }
+
+.info-detail-card-header {
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.info-detail-icon {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.info-detail-card-header h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--deep-jade);
+    margin: 0 0 3px;
+}
+
+.info-detail-card-header p {
+    font-size: 0.75rem;
+    color: #aaa;
+    margin: 0;
+}
+
+/* --- Icon List --- */
+.info-icon-list {
+    padding: 16px 22px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.info-icon-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: var(--cloud-white);
+    border: 1px solid rgba(0,104,74,0.05);
+    transition: background 0.2s;
+}
+
+.info-icon-row:hover {
+    background: rgba(216, 243, 220, 0.4);
+}
+
+.info-row-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    line-height: 1;
+    margin-top: 2px;
+}
+
+.info-icon-row strong {
+    font-size: 0.88rem;
+    color: #1a1a1a;
+    display: block;
+    margin-bottom: 3px;
+    font-weight: 600;
+}
+
+.info-icon-row p {
+    font-size: 0.8rem;
+    color: #888;
+    margin: 0;
+    line-height: 1.4;
+}
+
+
 /* --- HAMBURGER MENU --- */
 .hamburger {
     display: none;
@@ -319,7 +786,6 @@ body {
 /* ================= MOBILE RESPONSIVE ================= */
 @media (max-width: 768px) {
 
-    /* HEADER & FOOTER */
     .header-right,
     .footer-nav {
         display: none;
@@ -336,7 +802,9 @@ body {
         width: 220px;
         background: white;
         border-radius: 12px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        box-shadow: 
+            0 10px 25px rgba(0,0,0,0.12),
+            0 0 0 1px rgba(0,0,0,0.05);
         padding: 1.5rem;
         display: none;
         flex-direction: column;
@@ -360,8 +828,9 @@ body {
     }
 
     .mobile-menu a:hover { 
-    color: var(--persimmon-red); 
-}
+        color: var(--persimmon-red); 
+    }
+
     .main-header {
         position: relative;
     }
@@ -378,7 +847,9 @@ body {
         flex-direction: column;
         gap: 1rem;
         padding: 1rem 1.5rem;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        box-shadow: 
+            0 8px 20px rgba(0,0,0,0.1),
+            0 0 0 1px rgba(0,0,0,0.05);
         border-radius: 10px;
         display: none;
         width: 200px;
@@ -389,7 +860,6 @@ body {
         display: flex;
     }
 
-    /* BODY DASHBOARD (CHANGEABLE) */
     .parent {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
@@ -399,8 +869,8 @@ body {
     }
 
     .parent > div {
-        grid-column: auto ;
-        grid-row: auto ;
+        grid-column: auto;
+        grid-row: auto;
         height: 100%;
     }
 
@@ -410,5 +880,71 @@ body {
     
     .div7, .div8 {
         padding: 20px !important;
+    }
+
+    .main-footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .footer-right {
+        text-align: center;
+    }
+
+     .card a {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-text {
+        text-align: center;
+        width: 100%;
+        padding: 14px 10px;
+    }
+
+    .card-text h3 {
+        font-size: 0.85rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .card-text::after {
+        text-align: center;
+        width: 100%;
+        display: block;
+    }
+
+    .card-img {
+        height: 160px;
+    }
+}
+
+/* ================================
+   MOBILE RESPONSIVE
+================================ */
+@media (max-width: 900px) {
+    .info-hero-card {
+        grid-template-columns: 1fr;
+    }
+
+    .info-hero-image {
+        height: 260px;
+    }
+
+    .info-hero-content {
+        padding: 24px 22px;
+    }
+
+    .info-stats-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .info-bottom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-title {
+        font-size: 1.7rem;
     }
 }
