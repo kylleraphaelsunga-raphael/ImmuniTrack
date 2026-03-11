@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme color" content = "#1bb566">
     <title>ImmuniTrack</title>
     <link rel="stylesheet" href="css/index.css?v=<?php echo time(); ?>">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
@@ -11,18 +12,24 @@
 <body>
 
     <main class="landing-container">
-        <div class="entry-card">
-            <div class="logo-wrapper">
-                <img src="images/favicon.png" alt="Immunitrack Logo" class="main-logo">
+        <div class="entry-card-wrapper">
+            <div class="entry-card">
+                <div class="logo-wrapper">
+                    <img src="images/favicon.png" alt="Immunitrack Logo" class="main-logo">
+                </div>
+                
+                <h1 class="tagline">Immuni<span class="highlight">Track</span></h1>
+                <p class="description">a web application to track, stay on schedule, expland your knowledge and take control of your health.</p>
+                
+                <a href="dashboard.php" class="continue-btn">
+                    Continue to ImmuniTrack
+                    <span class="arrow">→</span>
+                </a>
+
+                <p class="switch-text" style="margin-top: 20px;">
+                    Already have an account? <a href="signin.php">Sign In</a>
+                </p>
             </div>
-            
-            <h1 class="tagline">Immuni<span class="highlight">Track</span></h1>
-            <p class="description">a web application to track, stay on schedule, expland your knowledge and take control of your health.</p>
-            
-            <a href="dashboard.php" class="continue-btn">
-                Continue to Immunitrack
-                <span class="arrow">→</span>
-            </a>
         </div>
         
         <footer class="minimal-footer">
