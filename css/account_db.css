@@ -192,26 +192,537 @@ body {
 }
 
 /* Sidebar Info Styles */
-.info-group { margin-bottom: 15px; }
-.info-group label { font-size: 0.75rem; color: #999; text-transform: uppercase; letter-spacing: 1px; }
-.info-group p { font-weight: 500; color: var(--text-dark); margin-top: 3px; }
+.info-group {
+    margin-bottom: 15px;
+}
+
+.info-group label {
+    font-size: 0.75rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-group p {
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-top: 3px;
+}
+
 
 /* Table Styles */
-.table-container { overflow-x: auto; }
-.custom-table { width: 100%; border-collapse: collapse; }
-.custom-table th { text-align: left; padding: 15px; background: var(--cloud-white); color: var(--deep-jade); font-size: 0.9rem; }
-.custom-table td { padding: 15px; border-bottom: 1px solid #f0f0f0; }
+.table-container {
+    overflow-x: auto;
+}
 
-.vax-name { font-weight: 700; color: var(--deep-jade); }
-.dose-tag { background: var(--mint-tint); padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 500; }
-.status-done { color: #28a745; font-weight: bold; font-size: 0.9rem; }
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.custom-table th {
+    text-align: left;
+    padding: 15px;
+    background: var(--cloud-white);
+    color: var(--deep-jade);
+    font-size: 0.9rem;
+}
+
+.custom-table td {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.vax-name {
+    font-weight: 700;
+    color: var(--deep-jade);
+}
+
+.dose-tag {
+    background: var(--mint-tint);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: inline-block;
+    text-align: center;
+}
+
+.status-done {
+    color: #28a745;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
 
 /* Button Styles */
-.btn-primary { background: var(--deep-jade); color: white; text-decoration: none; padding: 12px 25px; border-radius: 10px; font-weight: 600; transition: 0.3s; }
-.btn-primary:hover { background: var(--persimmon-red); transform: translateY(-2px); }
+.btn-primary {
+    background: var(--deep-jade);
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: 0.3s;
+}
 
-.btn-secondary { display: block; text-align: center; margin-top: 20px; color: var(--deep-jade); text-decoration: none; font-size: 0.9rem; border: 1px solid var(--deep-jade); padding: 8px; border-radius: 8px; }
+.btn-primary:hover {
+    background: var(--persimmon-red);
+    transform: translateY(-2px);
+}
 
+.btn-secondary {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: var(--deep-jade);
+    text-decoration: none;
+    font-size: 0.9rem;
+    border: 1px solid var(--deep-jade);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+/* ===========================
+   ECARD PAGE - ImmuniTrack
+   Extends account_db.css
+=========================== */
+
+/* --- Page Layout --- */
+.ecard-page {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 24px 80px;
+}
+
+.ecard-page-header {
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid var(--mint-tint);
+}
+
+.ecard-page-header .title {
+    color: var(--deep-jade);
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 10px 0 6px;
+    letter-spacing: -0.5px;
+}
+
+.ecard-subtitle {
+    color: #aaa;
+    font-size: 0.88rem;
+    margin: 0;
+    letter-spacing: 0.3px;
+}
+
+/* --- Empty State --- */
+.ecard-empty {
+    text-align: center;
+    padding: 80px 20px;
+    color: #bbb;
+    font-size: 0.95rem;
+    background: white;
+    border-radius: 20px;
+    border: 2px dashed #e0e0e0;
+}
+
+.ecard-empty a {
+    color: var(--deep-jade);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.ecard-empty a:hover {
+    color: var(--persimmon-red);
+}
+
+/* --- Each Card Block --- */
+.ecard-wrapper {
+    margin-bottom: 56px;
+}
+
+/* --- Controls Row --- */
+.ecard-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.ecard-status {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.status-complete {
+    background: var(--mint-tint);
+    color: var(--deep-jade);
+    box-shadow: 0 2px 8px rgba(0, 104, 74, 0.15);
+}
+
+.status-pending {
+    background: #fff8e1;
+    color: #b45309;
+    box-shadow: 0 2px 8px rgba(180, 83, 9, 0.1);
+}
+
+.ecard-doses-note {
+    font-size: 0.8rem;
+    color: #bbb;
+    font-style: italic;
+}
+
+/* ==============================
+   THE CARD ITSELF
+============================== */
+.ecard-id {
+    display: flex;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Outfit', sans-serif;
+    min-height: 240px;
+
+    /* Realistic card shadow — layered */
+    box-shadow:
+        0 1px 1px rgba(0,0,0,0.06),
+        0 2px 2px rgba(0,0,0,0.06),
+        0 4px 4px rgba(0,0,0,0.06),
+        0 8px 8px rgba(0,0,0,0.06),
+        0 16px 16px rgba(0,0,0,0.04),
+        0 0 0 1px rgba(0,0,0,0.04);
+
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.35s ease;
+}
+
+.ecard-id:not(.ecard-locked):hover {
+    transform: translateY(-6px) scale(1.005);
+    box-shadow:
+        0 2px 2px rgba(0,0,0,0.06),
+        0 4px 4px rgba(0,0,0,0.06),
+        0 8px 8px rgba(0,0,0,0.06),
+        0 16px 16px rgba(0,0,0,0.06),
+        0 32px 32px rgba(0,0,0,0.04),
+        0 0 0 1px rgba(0,0,0,0.04);
+}
+
+/* --- Locked State --- */
+.ecard-locked {
+    filter: blur(4px) brightness(0.97);
+    pointer-events: none;
+    user-select: none;
+}
+
+.ecard-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(240, 238, 233, 0.72);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 20px;
+    filter: none !important;
+    pointer-events: none;
+    z-index: 10;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+.ecard-overlay span {
+    background: white;
+    padding: 11px 26px;
+    border-radius: 40px;
+    box-shadow:
+        0 4px 14px rgba(0,0,0,0.08),
+        0 0 0 1px rgba(0,0,0,0.04);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #555;
+    letter-spacing: 0.2px;
+}
+
+/* ==============================
+   LEFT PANEL
+============================== */
+.ecard-left {
+    width: 35%;
+    flex-shrink: 0;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+    overflow: hidden;
+    color: white;
+
+    /* Rich gradient */
+    background: linear-gradient(145deg,
+        #00684A 0%,
+        #005540 40%,
+        #003d2e 100%
+    );
+}
+
+/* Decorative watermark pattern */
+.ecard-left::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+.ecard-left::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: -50px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Diagonal stripe texture */
+.ecard-left-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    height: 100%;
+}
+
+.ecard-logo {
+    font-size: 2.4rem;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.25));
+    line-height: 1;
+}
+
+.ecard-vaccine-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.4px;
+}
+
+.ecard-vaccine-label {
+    font-size: 0.62rem;
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-bottom: 16px;
+}
+
+/* Thin divider */
+.ecard-divider {
+    width: 40px;
+    height: 2px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 2px;
+    margin: 4px 0 12px;
+}
+
+.ecard-doses {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: auto;
+}
+
+.ecard-dose-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 0.74rem;
+    background: rgba(255,255,255,0.08);
+    padding: 7px 11px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.ecard-dose-row span:first-child {
+    font-weight: 600;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    flex: 1;
+    min-width: 0;
+}
+
+.ecard-dose-row span:last-child {
+    opacity: 0.75;
+    white-space: nowrap;
+    flex-shrink: 0;
+}lex-shrink: 0;
+
+.ecard-completed-date {
+    margin-top: 14px;
+    font-size: 0.7rem;
+    opacity: 0.65;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 12px;
+    letter-spacing: 0.3px;
+}
+
+/* ==============================
+   RIGHT PANEL
+============================== */
+.ecard-right {
+    width: 65%;
+    background: white;
+    padding: 32px 32px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+    position: relative;
+}
+
+/* Top accent bar */
+.ecard-right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg,
+        var(--mint-tint) 0%,
+        rgba(216, 243, 220, 0.3) 60%,
+        transparent 100%
+    );
+}
+
+/* Subtle background pattern */
+.ecard-right::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(0,104,74,0.025) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+}
+
+.ecard-fields-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.ecard-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ecard-field.full-width {
+    grid-column: span 2;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #f5f5f5;
+    margin-bottom: 2px;
+}
+
+.ecard-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    color: #c0c0c0;
+    font-weight: 700;
+}
+
+.ecard-value {
+    font-size: 0.9rem;
+    color: #1a1a1a;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+/* ImmuniTrack watermark */
+.ecard-immunitrack {
+    position: absolute;
+    bottom: 14px;
+    right: 18px;
+    font-size: 0.58rem;
+    font-weight: 700;
+    color: #e0e0e0;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    z-index: 1;
+}
+
+/* ==============================
+   BUTTONS
+============================== */
+.ecard-controls .btn-secondary {
+    display: inline-block;
+    margin-top: 0;
+    padding: 7px 18px;
+    font-size: 0.82rem;
+}
+
+.ecard-controls .btn-primary {
+    padding: 7px 18px;
+    font-size: 0.82rem;
+    border: none;
+    cursor: pointer;
+}
+
+/* ==============================
+   MESSAGES
+============================== */
+.msg-success {
+    background: var(--mint-tint);
+    color: var(--deep-jade);
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+    border-left: 4px solid var(--deep-jade);
+}
+
+.msg-error {
+    background: #fde8ea;
+    color: var(--persimmon-red);
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+    border-left: 4px solid var(--persimmon-red);
+}
+
+/* ==============================
+   FORM SECTION TITLE
+============================== */
+.form-section-title {
+    color: var(--deep-jade);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 24px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
 
 /* ================= MOBILE RESPONSIVE ================= */
 @media (max-width: 768px) {
@@ -286,6 +797,14 @@ body {
         display: flex;
     }
 
-    .db-content { grid-template-columns: 1fr; }
-    .db-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .db-content { 
+        grid-template-columns: 1fr; 
+    }
+
+    .db-header { 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 20px;
+    }
+    
 }
