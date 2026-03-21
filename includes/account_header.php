@@ -14,13 +14,13 @@
         <!-- Mobile Combined Menu -->
         <div class="mobile-menu" id="mobileMenu">
             <a href="account_db.php">Account</a>
-            <a href="#">Digital Card</a>
-            <a href="#">Book a Dose</a>
-            <a href="records.php">Records</a>
+            <a href="digitalcard.php">Digital Card</a>
+            <a href="booking.php">Book a Dose</a>
+            <a href="appointments.php">Appointments</a>
             <hr>
-            <a href="contact.php">Contact</a>
-            <a href="about.php">About Us</a>
-            <a href="#">Privacy</a>
+            <a href="account_contact.php">Contact</a>
+            <a href="account_about.php">About Us</a>
+            <a href="account_privacy.php">Privacy</a>
             <a href="logout.php" class="nav-acc">Logout</a>
 
         </div>
@@ -40,9 +40,9 @@
         <!-- Navigation -->
         <nav class="header-right" id="navMenu">
             <a href="account_db.php">Account</a>
-            <a href="#">Digital Card</a>
-            <a href="">Book a Dose</a>
-            <a href="records.php">Records</a>
+            <a href="digitalcard.php">Digital Card</a>
+            <a href="booking.php">Book a Dose</a>
+            <a href="appointments.php">Appointments</a>
             <a href="logout.php" class="nav-acc">Logout</a>
         </nav>
     </header>
