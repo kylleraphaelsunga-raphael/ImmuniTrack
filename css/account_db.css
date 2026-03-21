@@ -13,10 +13,16 @@ Persimmon Red: #E63946
     --persimmon-red: #E63946;
     --dark-footer: #1A1C1E;
     --mint-tint: #D8F3DC;
+    --gold: #B8962E;
+    --gold-light: #E8D5A0;
+    --gold-pale: #FDF8EC;
+    --cert-bg: #FEFCF7;
 }
 
 body {
     background-color: var(--cloud-white);
+    background-image: radial-gradient(circle, rgba(0,104,74,0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
     font-family: 'Outfit', sans-serif;
     margin: 0;
     display: flex;
@@ -31,7 +37,12 @@ body {
     align-items: center;
     padding: 1rem 5%;
     background: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow:
+        0 1px 0 rgba(0,0,0,0.06),
+        0 4px 20px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .header-left { 
@@ -72,7 +83,7 @@ body {
     color: var(--persimmon-red); 
 }
 
-/* --- ACCOUNT NAVIGATION HEADER --- */
+/* --- ACCOUNT NAV --- */
 .nav-acc {
     background-color: var(--deep-jade);
     color: white !important;
@@ -106,9 +117,7 @@ body {
     opacity: 0.8; 
 }
 
-.footer-right { 
-    text-align: right; 
-}
+.footer-right { text-align: right; }
 
 .footer-nav { 
     display: flex; 
@@ -121,11 +130,10 @@ body {
     color: #ccc; 
     text-decoration: none; 
     font-size: 0.9rem; 
+    transition: color 0.2s;
 }
 
-.footer-nav a:hover { 
-    color: white; 
-}
+.footer-nav a:hover { color: white; }
 
 .copyright { 
     font-size: 0.75rem; 
@@ -133,13 +141,13 @@ body {
     margin: 0; 
 }
 
-/* --- DASHBOARD --- */
+/* --- DASHBOARD BODY --- */
 .dashboard-body { 
     flex: 1; 
     padding: 2rem 5%; 
 }
 
-/* --- HAMBURGER MENU --- */
+/* --- HAMBURGER --- */
 .hamburger {
     display: none;
     font-size: 28px;
@@ -147,12 +155,11 @@ body {
     color: var(--deep-jade);
 }
 
-.mobile-menu {
-    display: none;
-}
+.mobile-menu { display: none; }
 
-
-/* Layout Structure */
+/* ================================
+   DASHBOARD LAYOUT
+================================ */
 .dashboard-wrapper {
     max-width: 1200px;
     margin: 40px auto;
@@ -176,7 +183,6 @@ body {
     gap: 30px;
 }
 
-/* Reusable Glass Card */
 .glass-card {
     background: white;
     border: 1px solid rgba(0, 104, 74, 0.1);
@@ -191,10 +197,7 @@ body {
     font-size: 1.2rem;
 }
 
-/* Sidebar Info Styles */
-.info-group {
-    margin-bottom: 15px;
-}
+.info-group { margin-bottom: 15px; }
 
 .info-group label {
     font-size: 0.75rem;
@@ -209,11 +212,10 @@ body {
     margin-top: 3px;
 }
 
-
-/* Table Styles */
-.table-container {
-    overflow-x: auto;
-}
+/* ================================
+   TABLE
+================================ */
+.table-container { overflow-x: auto; }
 
 .custom-table {
     width: 100%;
@@ -248,14 +250,9 @@ body {
     text-align: center;
 }
 
-.status-done {
-    color: #28a745;
-    font-weight: bold;
-    font-size: 0.9rem;
-}
-
-
-/* Button Styles */
+/* ================================
+   BUTTONS
+================================ */
 .btn-primary {
     background: var(--deep-jade);
     color: white;
@@ -264,6 +261,10 @@ body {
     border-radius: 10px;
     font-weight: 600;
     transition: 0.3s;
+    display: inline-block;
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
 }
 
 .btn-primary:hover {
@@ -272,23 +273,272 @@ body {
 }
 
 .btn-secondary {
-    display: block;
+    display: inline-block;
     text-align: center;
     margin-top: 20px;
     color: var(--deep-jade);
     text-decoration: none;
     font-size: 0.9rem;
     border: 1px solid var(--deep-jade);
-    padding: 8px;
+    padding: 8px 18px;
     border-radius: 8px;
+    transition: all 0.2s;
+    font-family: inherit;
+    cursor: pointer;
+    background: white;
 }
 
-/* ===========================
-   ECARD PAGE - ImmuniTrack
-   Extends account_db.css
-=========================== */
+.btn-secondary:hover {
+    background: var(--deep-jade);
+    color: white;
+}
 
-/* --- Page Layout --- */
+/* ================================
+   MESSAGES
+================================ */
+.msg-success {
+    background: var(--mint-tint);
+    color: var(--deep-jade);
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+    border-left: 4px solid var(--deep-jade);
+}
+
+.msg-error {
+    background: #fde8ea;
+    color: var(--persimmon-red);
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+    border-left: 4px solid var(--persimmon-red);
+}
+
+/* ================================
+   FORM SECTION TITLE
+================================ */
+.form-section-title {
+    color: var(--deep-jade);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 24px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+/* --- Stats Row --- */
+.db-stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
+}
+ 
+.db-stat-card {
+    background: white;
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid rgba(0,104,74,0.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+ 
+.db-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,104,74,0.1);
+}
+ 
+.db-stat-card.stat-card-alert {
+    border-left: 3px solid #f59e0b;
+    background: #fffdf5;
+}
+ 
+.db-stat-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+ 
+.stat-icon-doses  { background: rgba(0,104,74,0.08);  color: var(--deep-jade); }
+.stat-icon-cats   { background: rgba(216,243,220,0.6); color: var(--deep-jade); }
+.stat-icon-appt   { background: rgba(230,57,70,0.08);  color: var(--persimmon-red); }
+.stat-icon-pending { background: #fff8e1; color: #b45309; }
+ 
+.db-stat-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+ 
+.db-stat-number {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--deep-jade);
+    line-height: 1;
+}
+ 
+.db-stat-label {
+    font-size: 0.72rem;
+    color: #aaa;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+ 
+/* --- Next Appointment Banner --- */
+.db-next-appt-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    border: 1px solid rgba(0,104,74,0.1);
+    border-left: 4px solid var(--deep-jade);
+    border-radius: 12px;
+    padding: 14px 20px;
+    margin-bottom: 24px;
+    gap: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+ 
+.next-appt-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--deep-jade);
+}
+ 
+.next-appt-left svg { flex-shrink: 0; }
+ 
+.next-appt-title {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--deep-jade);
+    margin-bottom: 3px;
+}
+ 
+.next-appt-detail {
+    font-size: 0.86rem;
+    color: #555;
+    line-height: 1.4;
+}
+ 
+.next-appt-detail strong {
+    color: var(--deep-jade);
+}
+ 
+.next-appt-link {
+    text-decoration: none;
+    color: var(--deep-jade);
+    font-weight: 700;
+    font-size: 0.84rem;
+    white-space: nowrap;
+    transition: color 0.2s;
+}
+ 
+.next-appt-link:hover {
+    color: var(--persimmon-red);
+}
+ 
+/* --- Profile Sidebar Additions --- */
+.profile-name-block {
+    text-align: center;
+    margin-bottom: 14px;
+}
+ 
+.profile-display-name {
+    font-size: 0.96rem;
+    font-weight: 700;
+    color: var(--deep-jade);
+    margin: 0 0 3px;
+}
+ 
+.profile-display-email {
+    font-size: 0.74rem;
+    color: #bbb;
+    margin: 0;
+    word-break: break-word;
+}
+ 
+.profile-divider {
+    height: 1px;
+    background: #f0f0f0;
+    margin: 14px 0;
+}
+ 
+/* Mini stats inside sidebar */
+.sidebar-mini-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+}
+ 
+.sidebar-mini-stat {
+    background: var(--cloud-white);
+    border-radius: 10px;
+    padding: 10px 6px;
+    text-align: center;
+    border: 1px solid rgba(0,104,74,0.07);
+}
+ 
+.mini-stat-num {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--deep-jade);
+    line-height: 1;
+}
+ 
+.mini-stat-lbl {
+    display: block;
+    font-size: 0.64rem;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-top: 3px;
+    font-weight: 600;
+}
+ 
+/* Profile pic placeholder — SVG version */
+.profile-pic-placeholder {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: var(--mint-tint);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid rgba(0,104,74,0.1);
+}
+ 
+/* Empty state link */
+.empty-state a {
+    color: var(--deep-jade);
+    font-weight: 600;
+    text-decoration: none;
+}
+ 
+.empty-state a:hover {
+    color: var(--persimmon-red);
+}
+
+/* ================================
+   E-CARD PAGE LAYOUT
+================================ */
 .ecard-page {
     max-width: 1100px;
     margin: 40px auto;
@@ -313,10 +563,8 @@ body {
     color: #aaa;
     font-size: 0.88rem;
     margin: 0;
-    letter-spacing: 0.3px;
 }
 
-/* --- Empty State --- */
 .ecard-empty {
     text-align: center;
     padding: 80px 20px;
@@ -333,16 +581,11 @@ body {
     text-decoration: none;
 }
 
-.ecard-empty a:hover {
-    color: var(--persimmon-red);
-}
+.ecard-wrapper { margin-bottom: 64px; }
 
-/* --- Each Card Block --- */
-.ecard-wrapper {
-    margin-bottom: 56px;
-}
-
-/* --- Controls Row --- */
+/* ================================
+   CONTROLS ROW
+================================ */
 .ecard-controls {
     display: flex;
     align-items: center;
@@ -378,301 +621,6 @@ body {
     font-style: italic;
 }
 
-/* ==============================
-   THE CARD ITSELF
-============================== */
-.ecard-id {
-    display: flex;
-    border-radius: 20px;
-    overflow: hidden;
-    position: relative;
-    font-family: 'Outfit', sans-serif;
-    min-height: 240px;
-
-    /* Realistic card shadow — layered */
-    box-shadow:
-        0 1px 1px rgba(0,0,0,0.06),
-        0 2px 2px rgba(0,0,0,0.06),
-        0 4px 4px rgba(0,0,0,0.06),
-        0 8px 8px rgba(0,0,0,0.06),
-        0 16px 16px rgba(0,0,0,0.04),
-        0 0 0 1px rgba(0,0,0,0.04);
-
-    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-                box-shadow 0.35s ease;
-}
-
-.ecard-id:not(.ecard-locked):hover {
-    transform: translateY(-6px) scale(1.005);
-    box-shadow:
-        0 2px 2px rgba(0,0,0,0.06),
-        0 4px 4px rgba(0,0,0,0.06),
-        0 8px 8px rgba(0,0,0,0.06),
-        0 16px 16px rgba(0,0,0,0.06),
-        0 32px 32px rgba(0,0,0,0.04),
-        0 0 0 1px rgba(0,0,0,0.04);
-}
-
-/* --- Locked State --- */
-.ecard-locked {
-    filter: blur(4px) brightness(0.97);
-    pointer-events: none;
-    user-select: none;
-}
-
-.ecard-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(240, 238, 233, 0.72);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    border-radius: 20px;
-    filter: none !important;
-    pointer-events: none;
-    z-index: 10;
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
-}
-
-.ecard-overlay span {
-    background: white;
-    padding: 11px 26px;
-    border-radius: 40px;
-    box-shadow:
-        0 4px 14px rgba(0,0,0,0.08),
-        0 0 0 1px rgba(0,0,0,0.04);
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #555;
-    letter-spacing: 0.2px;
-}
-
-/* ==============================
-   LEFT PANEL
-============================== */
-.ecard-left {
-    width: 35%;
-    flex-shrink: 0;
-    padding: 32px 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    position: relative;
-    overflow: hidden;
-    color: white;
-
-    /* Rich gradient */
-    background: linear-gradient(145deg,
-        #00684A 0%,
-        #005540 40%,
-        #003d2e 100%
-    );
-}
-
-/* Decorative watermark pattern */
-.ecard-left::before {
-    content: '';
-    position: absolute;
-    top: -60px;
-    right: -60px;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.06);
-}
-
-.ecard-left::after {
-    content: '';
-    position: absolute;
-    bottom: -50px;
-    left: -50px;
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.05);
-}
-
-/* Diagonal stripe texture */
-.ecard-left-inner {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    height: 100%;
-}
-
-.ecard-logo {
-    font-size: 2.4rem;
-    margin-bottom: 10px;
-    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.25));
-    line-height: 1;
-}
-
-.ecard-vaccine-name {
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.4px;
-}
-
-.ecard-vaccine-label {
-    font-size: 0.62rem;
-    opacity: 0.6;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    margin-bottom: 16px;
-}
-
-/* Thin divider */
-.ecard-divider {
-    width: 40px;
-    height: 2px;
-    background: rgba(255,255,255,0.25);
-    border-radius: 2px;
-    margin: 4px 0 12px;
-}
-
-.ecard-doses {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-top: auto;
-}
-
-.ecard-dose-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    font-size: 0.74rem;
-    background: rgba(255,255,255,0.08);
-    padding: 7px 11px;
-    border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.1);
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.ecard-dose-row span:first-child {
-    font-weight: 600;
-    white-space: normal;
-    overflow: visible;
-    text-overflow: unset;
-    flex: 1;
-    min-width: 0;
-}
-
-.ecard-dose-row span:last-child {
-    opacity: 0.75;
-    white-space: nowrap;
-    flex-shrink: 0;
-}lex-shrink: 0;
-
-.ecard-completed-date {
-    margin-top: 14px;
-    font-size: 0.7rem;
-    opacity: 0.65;
-    border-top: 1px solid rgba(255,255,255,0.12);
-    padding-top: 12px;
-    letter-spacing: 0.3px;
-}
-
-/* ==============================
-   RIGHT PANEL
-============================== */
-.ecard-right {
-    width: 65%;
-    background: white;
-    padding: 32px 32px 28px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0;
-    position: relative;
-}
-
-/* Top accent bar */
-.ecard-right::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg,
-        var(--mint-tint) 0%,
-        rgba(216, 243, 220, 0.3) 60%,
-        transparent 100%
-    );
-}
-
-/* Subtle background pattern */
-.ecard-right::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle, rgba(0,104,74,0.025) 1px, transparent 1px);
-    background-size: 20px 20px;
-    pointer-events: none;
-}
-
-.ecard-fields-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px 20px;
-    position: relative;
-    z-index: 1;
-}
-
-.ecard-field {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.ecard-field.full-width {
-    grid-column: span 2;
-    padding-bottom: 14px;
-    border-bottom: 1px solid #f5f5f5;
-    margin-bottom: 2px;
-}
-
-.ecard-label {
-    font-size: 0.6rem;
-    text-transform: uppercase;
-    letter-spacing: 1.4px;
-    color: #c0c0c0;
-    font-weight: 700;
-}
-
-.ecard-value {
-    font-size: 0.9rem;
-    color: #1a1a1a;
-    font-weight: 600;
-    line-height: 1.3;
-}
-
-/* ImmuniTrack watermark */
-.ecard-immunitrack {
-    position: absolute;
-    bottom: 14px;
-    right: 18px;
-    font-size: 0.58rem;
-    font-weight: 700;
-    color: #e0e0e0;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    z-index: 1;
-}
-
-/* ==============================
-   BUTTONS
-============================== */
 .ecard-controls .btn-secondary {
     display: inline-block;
     margin-top: 0;
@@ -683,59 +631,833 @@ body {
 .ecard-controls .btn-primary {
     padding: 7px 18px;
     font-size: 0.82rem;
-    border: none;
-    cursor: pointer;
 }
 
-/* ==============================
-   MESSAGES
-============================== */
-.msg-success {
+/* ================================
+   THE CERTIFICATE CARD
+================================ */
+.ecard-id {
+    position: relative;
+    font-family: 'Outfit', sans-serif;
+    background: var(--cert-bg);
+    border-radius: 4px;
+    overflow: hidden;
+
+    /* Outer gold border */
+    border: 3px solid var(--gold);
+    outline: 6px solid var(--gold-pale);
+    outline-offset: -9px;
+
+    box-shadow:
+        0 2px 4px rgba(0,0,0,0.06),
+        0 8px 24px rgba(0,0,0,0.1),
+        0 24px 48px rgba(0,0,0,0.06),
+        inset 0 0 0 1px rgba(184,150,46,0.15);
+
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.35s ease;
+
+    display: block;
+}
+
+.ecard-id:not(.ecard-locked):hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 4px 8px rgba(0,0,0,0.06),
+        0 16px 32px rgba(0,0,0,0.1),
+        0 32px 64px rgba(0,0,0,0.06),
+        inset 0 0 0 1px rgba(184,150,46,0.2);
+}
+
+/* ================================
+   CERTIFICATE HEADER BAND
+================================ */
+.ecard-cert-header {
+    background: var(--deep-jade);
+    padding: 18px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid var(--gold);
+}
+
+.ecard-cert-logo-area {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.ecard-cert-logo-box {
+    width: 46px;
+    height: 46px;
+    background: rgba(255,255,255,0.15);
+    border: 1.5px solid rgba(255,255,255,0.3);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ecard-cert-logo-box img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.ecard-cert-org {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.ecard-cert-org-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.ecard-cert-org-sub {
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.ecard-cert-doc-number {
+    font-size: 0.62rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 1.5px;
+    text-align: right;
+    font-family: 'Courier New', monospace;
+}
+
+/* ================================
+   CERTIFICATE TITLE SECTION
+================================ */
+.ecard-cert-title-section {
+    text-align: center;
+    padding: 28px 36px 16px;
+    border-bottom: 1px solid var(--gold-light);
+    position: relative;
+}
+
+/* Corner ornaments */
+.ecard-cert-title-section::before,
+.ecard-cert-title-section::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-color: var(--gold-light);
+    border-style: solid;
+}
+
+.ecard-cert-title-section::before {
+    top: 12px;
+    left: 24px;
+    border-width: 2px 0 0 2px;
+}
+
+.ecard-cert-title-section::after {
+    top: 12px;
+    right: 24px;
+    border-width: 2px 2px 0 0;
+}
+
+.ecard-cert-title {
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.ecard-vaccine-name {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--deep-jade);
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+}
+
+.ecard-vaccine-label {
+    font-size: 0.72rem;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 4px;
+}
+
+/* ================================
+   CERTIFICATE BODY
+================================ */
+.ecard-cert-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 24px 36px;
+    border-bottom: 1px solid var(--gold-light);
+}
+
+.ecard-cert-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.ecard-cert-col:first-child {
+    padding-right: 28px;
+    border-right: 1px solid var(--gold-light);
+}
+
+.ecard-cert-col:last-child {
+    padding-left: 28px;
+}
+
+.ecard-field {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.ecard-label {
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    color: var(--gold);
+    font-weight: 700;
+}
+
+.ecard-value {
+    font-size: 0.92rem;
+    color: #1a1a1a;
+    font-weight: 600;
+    line-height: 1.3;
+    padding-bottom: 8px;
+    border-bottom: 1px dotted #e8e0d0;
+}
+
+/* ================================
+   DOSE RECORDS SECTION
+================================ */
+.ecard-cert-doses-section {
+    padding: 20px 36px;
+    border-bottom: 1px solid var(--gold-light);
+}
+
+.ecard-doses-heading {
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.ecard-doses {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ecard-dose-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    font-size: 0.82rem;
+    border: 1px solid #e8e0ce;
+    border-radius: 4px;
+    overflow: hidden;
+    background: white;
+}
+
+.ecard-dose-row span:first-child {
+    font-weight: 600;
+    color: white;
+    background: var(--deep-jade);
+    padding: 6px 14px;
+    flex-shrink: 0;
+    font-size: 0.76rem;
+    letter-spacing: 0.3px;
+    min-width: 120px;
+}
+
+.ecard-dose-row span:nth-child(2) {
+    color: #333;
+    padding: 6px 14px;
+    flex: 1;
+    font-weight: 500;
+    border-right: 1px solid #e8e0ce;
+}
+
+.ecard-dose-row span:last-child {
+    color: #888;
+    padding: 6px 14px;
+    font-size: 0.76rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-family: 'Courier New', monospace;
+}
+
+/* ================================
+   CERTIFICATE FOOTER
+================================ */
+.ecard-cert-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 36px 20px;
+    gap: 24px;
+}
+
+/* Official Seal SVG */
+.ecard-seal {
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+}
+
+.ecard-completed-date {
+    flex: 1;
+    text-align: center;
+}
+
+.ecard-completed-date .cert-date-label {
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #bbb;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.ecard-completed-date .cert-date-value {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--deep-jade);
+    display: block;
+}
+
+/* Signature area */
+.ecard-signature {
+    text-align: center;
+    width: 160px;
+    flex-shrink: 0;
+}
+
+.ecard-sig-line {
+    width: 100%;
+    height: 1px;
+    background: #333;
+    margin-bottom: 5px;
+}
+
+.ecard-sig-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #999;
+    display: block;
+}
+
+.ecard-sig-name {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--deep-jade);
+    letter-spacing: 0.5px;
+}
+
+/* ImmuniTrack watermark */
+.ecard-immunitrack {
+    position: absolute;
+    bottom: 10px;
+    right: 14px;
+    font-size: 0.52rem;
+    font-weight: 700;
+    color: rgba(184,150,46,0.3);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    z-index: 1;
+    font-family: 'Courier New', monospace;
+}
+
+/* ================================
+   LOCKED STATE
+================================ */
+.ecard-locked {
+    filter: blur(5px) brightness(0.95);
+    pointer-events: none;
+    user-select: none;
+}
+
+.ecard-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(240, 238, 233, 0.75);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 4px;
+    filter: none !important;
+    pointer-events: none;
+    z-index: 10;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+.ecard-overlay span {
+    background: white;
+    padding: 12px 28px;
+    border-radius: 40px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.04);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #555;
+    letter-spacing: 0.3px;
+    border: 1px solid var(--gold-light);
+}
+
+/* ================================
+   PROFILE AVATAR
+================================ */
+.profile-avatar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.profile-pic-img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+    border: 3px solid var(--mint-tint);
+    box-shadow: 0 4px 14px rgba(0,104,74,0.15);
+}
+
+.profile-pic-placeholder {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: var(--mint-tint);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.8rem;
+    border: 3px solid rgba(0,104,74,0.1);
+}
+
+/* ================================
+   HISTORY CARD HEADER
+================================ */
+.history-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.history-card-header h3 { margin: 0; }
+
+.btn-appointments {
+    text-decoration: none;
     background: var(--mint-tint);
     color: var(--deep-jade);
-    padding: 14px 22px;
-    border-radius: 12px;
-    font-weight: 600;
-    margin-bottom: 24px;
-    font-size: 0.9rem;
-    border-left: 4px solid var(--deep-jade);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 7px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(0,104,74,0.12);
+    transition: all 0.2s ease;
 }
 
-.msg-error {
+.btn-appointments:hover {
+    background: var(--deep-jade);
+    color: white;
+}
+
+/* ================================
+   STATUS PILLS
+================================ */
+.status-done {
+    background: #d1fae5;
+    color: #065f46;
+    font-weight: 700;
+    font-size: 0.78rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.status-pending {
+    background: #fff8e1;
+    color: #b45309;
+    font-weight: 700;
+    font-size: 0.78rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.status-missed {
     background: #fde8ea;
     color: var(--persimmon-red);
-    padding: 14px 22px;
-    border-radius: 12px;
-    font-weight: 600;
-    margin-bottom: 24px;
-    font-size: 0.9rem;
-    border-left: 4px solid var(--persimmon-red);
-}
-
-/* ==============================
-   FORM SECTION TITLE
-============================== */
-.form-section-title {
-    color: var(--deep-jade);
-    font-size: 1.05rem;
     font-weight: 700;
-    margin: 24px 0 14px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
+    font-size: 0.78rem;
+    padding: 4px 10px;
+    border-radius: 20px;
 }
 
-/* ================= MOBILE RESPONSIVE ================= */
+.status-cancelled {
+    background: #f5f5f5;
+    color: #888;
+    font-weight: 700;
+    font-size: 0.78rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+/* ================================
+   MY BOOKINGS PAGE
+================================ */
+.bookings-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+}
+
+.bookings-empty {
+    text-align: center;
+    padding: 80px 20px;
+    background: white;
+    border-radius: 16px;
+    border: 2px dashed #e0e0e0;
+    color: #bbb;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.bookings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.booking-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(0,104,74,0.08);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 6px 20px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.booking-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04), 0 12px 28px rgba(0,104,74,0.1);
+}
+
+.booking-card.status-pending   { border-left: 4px solid #f59e0b; }
+.booking-card.status-completed { border-left: 4px solid var(--deep-jade); }
+.booking-card.status-missed    { border-left: 4px solid var(--persimmon-red); }
+.booking-card.status-cancelled { border-left: 4px solid #aaa; }
+
+.booking-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 18px 18px 12px;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.booking-card-vax { display: flex; flex-direction: column; gap: 3px; }
+.bk-category { font-size: 1rem; font-weight: 700; color: var(--deep-jade); }
+.bk-brand { font-size: 0.78rem; color: #aaa; font-weight: 500; }
+
+.bk-status-pill {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 5px 12px;
+    border-radius: 100px;
+}
+
+.bk-pending   { background: #fff8e1; color: #b45309; }
+.bk-completed { background: var(--mint-tint); color: var(--deep-jade); }
+.bk-missed    { background: #fde8ea; color: var(--persimmon-red); }
+.bk-cancelled { background: #f5f5f5; color: #888; }
+
+.booking-card-details {
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.bk-detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 8px 0;
+    border-bottom: 1px solid #f8f8f8;
+    font-size: 0.84rem;
+    gap: 10px;
+}
+
+.bk-detail-row:last-child { border-bottom: none; }
+.bk-detail-row span { color: #aaa; font-weight: 500; white-space: nowrap; flex-shrink: 0; }
+.bk-detail-row strong { color: #333; font-weight: 600; text-align: right; }
+
+.booking-card-actions {
+    padding: 14px 18px;
+    border-top: 1px solid #f5f5f5;
+    background: #fafafa;
+}
+
+.actions-label {
+    font-size: 0.72rem;
+    color: #bbb;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 10px;
+}
+
+.actions-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.actions-row form { flex: 1; min-width: 0; }
+
+.bk-btn {
+    width: 100%;
+    padding: 9px 8px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.bk-btn-complete { background: var(--mint-tint); color: var(--deep-jade); border: 1px solid rgba(0,104,74,0.15); }
+.bk-btn-complete:hover { background: var(--deep-jade); color: white; }
+.bk-btn-missed { background: #fde8ea; color: var(--persimmon-red); border: 1px solid rgba(230,57,70,0.15); }
+.bk-btn-missed:hover { background: var(--persimmon-red); color: white; }
+.bk-btn-cancel { background: #f5f5f5; color: #888; border: 1px solid #e0e0e0; }
+.bk-btn-cancel:hover { background: #888; color: white; }
+
+.booking-card-done,
+.booking-card-missed-msg {
+    padding: 12px 18px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border-top: 1px solid rgba(0,104,74,0.08);
+    border-radius: 0 0 16px 16px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: auto;
+    align-self: stretch;
+}
+
+.booking-card-done { background: rgba(216,243,220,0.4); color: var(--deep-jade); }
+.booking-card-missed-msg { background: #fafafa; color: #888; border-top: 1px solid #f0f0f0; }
+.booking-card-missed-msg a { color: var(--deep-jade); font-weight: 700; text-decoration: none; }
+.booking-card-missed-msg a:hover { color: var(--persimmon-red); }
+
+/* ================================
+   APPOINTMENTS PAGE ADDITIONS
+   Append to account_db.css
+================================ */
+ 
+/* --- Summary Stats Row --- */
+.appt-stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto 28px;
+    padding: 0 0px;
+}
+ 
+.appt-stat-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border: 1px solid rgba(0,104,74,0.08);
+    border-left: 4px solid rgba(0,104,74,0.2);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: transform 0.2s ease;
+}
+ 
+.appt-stat-card:hover {
+    transform: translateY(-2px);
+}
+ 
+.appt-stat-card.stat-pending   { border-left-color: #f59e0b; }
+.appt-stat-card.stat-completed { border-left-color: var(--deep-jade); }
+.appt-stat-card.stat-missed    { border-left-color: var(--persimmon-red); }
+ 
+.appt-stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--deep-jade);
+    line-height: 1;
+}
+ 
+.appt-stat-card.stat-pending .appt-stat-number   { color: #b45309; }
+.appt-stat-card.stat-completed .appt-stat-number { color: var(--deep-jade); }
+.appt-stat-card.stat-missed .appt-stat-number    { color: var(--persimmon-red); }
+ 
+.appt-stat-label {
+    font-size: 0.76rem;
+    color: #aaa;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+ 
+/* --- Reminder Banner --- */
+.appt-reminder-banner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #fffbf0;
+    border: 1px solid rgba(245,158,11,0.2);
+    border-left: 4px solid #f59e0b;
+    border-radius: 12px;
+    padding: 14px 20px;
+    margin-bottom: 20px;
+    font-size: 0.88rem;
+    color: #92400e;
+    line-height: 1.5;
+}
+ 
+.reminder-banner-icon {
+    color: #f59e0b;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+ 
+.appt-reminder-banner strong {
+    color: #78350f;
+}
+ 
+/* --- Empty State --- */
+.empty-icon {
+    margin-bottom: 4px;
+    opacity: 0.5;
+}
+ 
+.empty-sub {
+    font-size: 0.84rem;
+    color: #ccc;
+    margin-top: -10px;
+}
+ 
+/* --- Card Top Right --- */
+.bk-top-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+ 
+/* Time tags */
+.bk-time-tag {
+    font-size: 0.64rem;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+ 
+.tag-today   { background: #fee2e2; color: #b91c1c; }
+.tag-soon    { background: #fef9c3; color: #854d0e; }
+.tag-overdue { background: #fde8ea; color: var(--persimmon-red); }
+.tag-future  { background: #f1f5f9; color: #64748b; }
+ 
+/* --- Dose Progress Bar --- */
+.bk-progress-area {
+    padding: 10px 18px 12px;
+    border-bottom: 1px solid #f5f5f5;
+}
+ 
+.bk-progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    color: #bbb;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+ 
+.bk-progress-bar {
+    width: 100%;
+    height: 6px;
+    background: #f0f0f0;
+    border-radius: 100px;
+    overflow: hidden;
+}
+ 
+.bk-progress-fill {
+    height: 100%;
+    background: #f59e0b;
+    border-radius: 100px;
+    transition: width 0.6s ease;
+}
+ 
+.bk-progress-fill.fill-done   { background: var(--deep-jade); }
+.bk-progress-fill.fill-missed { background: #e0e0e0; }
+ 
+/* --- Next Steps Hint --- */
+.bk-next-steps {
+    padding: 10px 18px;
+    background: rgba(216,243,220,0.25);
+    border-top: 1px solid rgba(0,104,74,0.06);
+    border-bottom: 1px solid rgba(0,104,74,0.06);
+}
+ 
+.bk-next-title {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--deep-jade);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 3px;
+}
+ 
+.bk-next-body {
+    font-size: 0.76rem;
+    color: #888;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* ================================
+   MOBILE
+================================ */
 @media (max-width: 768px) {
 
-    /* HEADER & FOOTER */
-    .header-right,
-    .footer-nav {
-        display: none;
-    }
-
-    .hamburger {
-        display: block;
-    }
+    .header-right, .footer-nav { display: none; }
+    .hamburger { display: block; }
 
     .mobile-menu {
         position: fixed;
@@ -752,31 +1474,12 @@ body {
         z-index: 2000;
     }
 
-    .mobile-menu a {
-        text-decoration: none;
-        color: var(--deep-jade);
-        font-weight: 500;
-    }
+    .mobile-menu a { text-decoration: none; color: var(--deep-jade); font-weight: 500; }
+    .mobile-menu hr { border: none; border-top: 1px solid #eee; }
+    .mobile-menu.show { display: flex; }
+    .mobile-menu a:hover { color: var(--persimmon-red); }
 
-    .mobile-menu hr {
-        border: none;
-        border-top: 1px solid #eee;
-    }
-
-    .mobile-menu.show {
-        display: flex;
-    }
-
-    .mobile-menu a:hover { 
-    color: var(--persimmon-red); 
-}
-    .main-header {
-        position: relative;
-    }
-
-    .hamburger {
-        display: block;
-    }
+    .main-header { position: relative; }
 
     .header-right {
         position: absolute;
@@ -793,18 +1496,68 @@ body {
         z-index: 1000;
     }
 
-    .header-right.show {
-        display: flex;
+    .appt-stats-row {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .db-content { 
-        grid-template-columns: 1fr; 
+    .header-right.show { display: flex; }
+    .db-content { grid-template-columns: 1fr; }
+    .db-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .bookings-grid { grid-template-columns: 1fr; }
+
+    .ecard-cert-body {
+        grid-template-columns: 1fr;
     }
 
-    .db-header { 
-        flex-direction: column; 
-        align-items: flex-start; 
-        gap: 20px;
+    .ecard-cert-col:first-child {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--gold-light);
+        padding-bottom: 16px;
     }
-    
+
+    .ecard-cert-col:last-child {
+        padding-left: 0;
+        padding-top: 16px;
+    }
+
+    .ecard-cert-header,
+    .ecard-cert-title-section,
+    .ecard-cert-body,
+    .ecard-cert-doses-section,
+    .ecard-cert-footer {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .ecard-cert-footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .ecard-dose-row {
+        flex-wrap: wrap;
+    }
+
+    .ecard-dose-row span:last-child {
+        border-top: 1px solid #e8e0ce;
+        width: 100%;
+        padding-top: 4px;
+    }
+
+    .db-stats-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+ 
+    .db-next-appt-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+ 
+    .sidebar-mini-stats {
+        gap: 6px;
+    }
 }
