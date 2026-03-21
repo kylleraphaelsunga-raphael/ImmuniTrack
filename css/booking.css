@@ -1,0 +1,542 @@
+/* ================================
+   BOOKING PAGE - ImmuniTrack
+   booking.css
+================================ */
+
+.booking-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 48px 20px;
+}
+
+/* ================================
+   TWO PANEL LAYOUT
+================================ */
+.booking-wide {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.booking-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 24px;
+    align-items: flex-start;
+    min-width: 0;
+}
+
+.booking-layout > * {
+    min-width: 0;
+}
+
+.booking-form-panel {
+    width: 100%;
+    min-width: 0;
+}
+
+.booking-form-panel .forms-card-wrapper {
+    max-width: 100% !important;
+    width: 100%;
+    animation: none;
+}
+
+.booking-form-panel .forms-card {
+    border-radius: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Form header row */
+.booking-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.booking-badge {
+    background: var(--mint-tint);
+    color: var(--deep-jade);
+    font-size: 0.74rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 100px;
+    letter-spacing: 0.4px;
+    border: 1px solid rgba(0,104,74,0.1);
+}
+
+/* Two column field layout */
+.booking-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+/* ================================
+   DOSE GUIDELINES
+================================ */
+.dose-guideline {
+    background: rgba(0,104,74,0.04);
+    border: 1.5px solid rgba(0,104,74,0.14);
+    border-left: 4px solid var(--deep-jade);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    animation: fadeUp 0.3s ease-out both;
+}
+
+.guideline-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--deep-jade);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 10px;
+}
+
+.guideline-note {
+    font-size: 0.84rem;
+    color: #555;
+    line-height: 1.6;
+    margin: 0 0 8px;
+}
+
+.guideline-interval {
+    font-size: 0.82rem;
+    color: #888;
+    margin: 0 0 12px;
+}
+
+.guideline-interval strong {
+    color: var(--deep-jade);
+    font-weight: 700;
+}
+
+.guideline-table {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.guideline-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: white;
+    border: 1px solid rgba(0,104,74,0.08);
+    border-radius: 8px;
+    padding: 9px 14px;
+    font-size: 0.82rem;
+}
+
+.gdose {
+    font-weight: 700;
+    color: var(--deep-jade);
+    min-width: 80px;
+    flex-shrink: 0;
+}
+
+.gtiming {
+    color: #666;
+    line-height: 1.4;
+}
+
+/* ================================
+   LIVE SUMMARY BOX
+================================ */
+.booking-summary {
+    background: var(--cloud-white);
+    border: 1.5px solid rgba(0,104,74,0.12);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin: 4px 0 20px;
+    animation: fadeUp 0.3s ease-out both;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.summary-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--deep-jade);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 12px;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+    min-width: 0;
+}
+
+.sum-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(0,104,74,0.06);
+    font-size: 0.84rem;
+    gap: 8px;
+}
+
+.sum-row:last-child,
+.sum-row:nth-last-child(2):nth-child(odd) {
+    border-bottom: none;
+}
+
+.sum-row span {
+    color: #aaa;
+    font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.sum-row strong {
+    color: var(--deep-jade);
+    font-weight: 700;
+    text-align: right;
+    word-break: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
+    min-width: 0;
+}
+
+/* ================================
+   RIGHT SIDEBAR
+================================ */
+.booking-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: sticky;
+    top: 100px;
+}
+
+.sidebar-card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid rgba(0,104,74,0.08);
+    box-shadow:
+        0 1px 2px rgba(0,0,0,0.04),
+        0 6px 20px rgba(0,0,0,0.05);
+}
+
+.sidebar-card-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--deep-jade);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 14px;
+}
+
+/* --- Reminders Card --- */
+.appt-reminders {
+    border-left: 4px solid #f59e0b;
+    background: #fffbf0;
+    border-top: 1px solid rgba(245,158,11,0.15);
+    border-right: 1px solid rgba(245,158,11,0.15);
+    border-bottom: 1px solid rgba(245,158,11,0.15);
+}
+
+.reminders-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #b45309;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 14px;
+}
+
+.reminders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.reminder-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 10px;
+    border: 1px solid rgba(245,158,11,0.12);
+}
+
+.reminder-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    line-height: 1;
+    margin-top: 2px;
+}
+
+.reminder-item strong {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #92400e;
+    margin-bottom: 2px;
+}
+
+.reminder-item p {
+    font-size: 0.74rem;
+    color: #b45309;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* --- Clinic Hours Card --- */
+.clinic-hours {
+    border-left: 4px solid var(--deep-jade);
+}
+
+.hours-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.hours-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(0,104,74,0.06);
+    font-size: 0.82rem;
+}
+
+.hours-row:last-child {
+    border-bottom: none;
+}
+
+.hours-row span {
+    color: #888;
+}
+
+.hours-row strong {
+    color: var(--deep-jade);
+    font-weight: 700;
+}
+
+.hours-row.closed strong {
+    color: var(--persimmon-red);
+}
+
+/* --- What to Expect Card --- */
+.what-to-expect {
+    border-left: 4px solid var(--persimmon-red);
+}
+
+.expect-list {
+    padding-left: 18px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.expect-list li {
+    font-size: 0.82rem;
+    color: #555;
+    line-height: 1.5;
+    padding-left: 4px;
+}
+
+/* ================================
+   CONFIRMATION CARD
+================================ */
+.confirmation-card {
+    text-align: center;
+}
+
+.confirm-icon {
+    font-size: 3.2rem;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.confirm-subtitle {
+    color: #888;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin: 0 0 22px;
+}
+
+.confirm-details {
+    background: var(--cloud-white);
+    border-radius: 14px;
+    padding: 4px 20px;
+    margin-bottom: 18px;
+    border: 1px solid rgba(0,104,74,0.08);
+    text-align: left;
+}
+
+.confirm-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 11px 0;
+    border-bottom: 1px solid rgba(0,104,74,0.06);
+    font-size: 0.86rem;
+    gap: 12px;
+}
+
+.confirm-row:last-child {
+    border-bottom: none;
+}
+
+.confirm-label {
+    color: #aaa;
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+.confirm-value {
+    color: var(--deep-jade);
+    font-weight: 700;
+    text-align: right;
+}
+
+.confirm-reminder {
+    background: #fffbf0;
+    border: 1px solid rgba(245,158,11,0.2);
+    border-left: 4px solid #f59e0b;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.confirm-reminder .reminder-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #b45309;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.confirm-reminder ul {
+    padding-left: 18px;
+    margin: 0;
+}
+
+.confirm-reminder li {
+    font-size: 0.82rem;
+    color: #92400e;
+    line-height: 1.8;
+}
+
+.confirm-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff8e1;
+    color: #b45309;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 8px 20px;
+    border-radius: 100px;
+    margin-bottom: 22px;
+    letter-spacing: 0.3px;
+}
+
+.confirm-status-pill .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #f59e0b;
+    display: inline-block;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.5; transform: scale(0.8); }
+}
+
+.confirm-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-back-link {
+    text-align: center;
+    color: #aaa;
+    font-size: 0.85rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+    display: block;
+}
+
+.btn-back-link:hover {
+    color: var(--deep-jade);
+}
+
+/* ================================
+   ANIMATIONS
+================================ */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ================================
+   MOBILE
+================================ */
+@media (max-width: 900px) {
+    .booking-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-sidebar {
+        position: static;
+    }
+}
+
+@media (max-width: 600px) {
+    .booking-container {
+        padding: 20px 14px;
+    }
+
+    .booking-two-col {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .confirm-row {
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .confirm-value {
+        text-align: left;
+    }
+
+    .guideline-row {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .gdose {
+        min-width: unset;
+    }
+}
