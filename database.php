@@ -60,4 +60,23 @@ CREATE TABLE vaccination_history (
         FOREIGN KEY (user_email) REFERENCES users(user_email) 
         ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- . CREATE TABLE bookings (
+    id            INT(11)      NOT NULL AUTO_INCREMENT,
+    user_email    VARCHAR(100) NOT NULL,
+    vax_category  VARCHAR(50)  DEFAULT NULL,
+    vaccine_type  VARCHAR(100) DEFAULT NULL,
+    dose_number   INT(11)      DEFAULT NULL,
+    booking_date  DATE         DEFAULT NULL,
+    booking_time  TIME         DEFAULT NULL,
+    clinic        VARCHAR(150) DEFAULT NULL,
+    medical_condition TEXT     DEFAULT NULL,
+    notes         TEXT         DEFAULT NULL,
+    status        ENUM('Pending','Completed','Missed','Cancelled') DEFAULT 'Pending',
+    created_at    TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+    PRIMARY KEY (id),
+    CONSTRAINT fk_booking_email
+        FOREIGN KEY (user_email) REFERENCES users(user_email)
+        ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
  -->
