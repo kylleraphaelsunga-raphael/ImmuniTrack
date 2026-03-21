@@ -36,8 +36,11 @@ include "database.php";
             $stmt->bind_param("sss", $username, $email, $password);
 
             if ($stmt->execute()) {
-                $message = "Registration successful! <a href='signin.php'>Login here</a>";
-                $msg_class = "msg-success";
+                // Auto login after registration
+                $_SESSION["user_email"] = $email;
+                $_SESSION["username"]   = $username;
+                header("Location: account_db.php");
+                exit();
             } else {
                 $message = "Something went wrong. Please try again.";
             }
