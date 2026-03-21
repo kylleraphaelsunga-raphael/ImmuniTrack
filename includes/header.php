@@ -14,7 +14,7 @@
         <!-- Mobile Combined Menu -->
         <div class="mobile-menu" id="mobileMenu">
             <a href="dashboard.php">Dashboard</a>
-            <a href="#">Information</a>
+            <a href="information.php">Information</a>
             <a href="signin.php">SignIn</a>
             <a href="signup.php">SignUp</a>
             <hr>
@@ -38,7 +38,7 @@
         <!-- Navigation -->
         <nav class="header-right" id="navMenu">
             <a href="dashboard.php">Dashboard</a>
-            <a href="#">Information</a>
+            <a href="information.php">Information</a>
             <a href="signin.php" class="nav-acc">SignIn</a>
             <a href="signup.php" class="nav-acc">SignUp</a>
         </nav>
