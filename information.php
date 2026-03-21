@@ -363,5 +363,4 @@ $d = $diseases[$disease];
 <?php include 'includes/footer.php'; ?>
 
 </body>
-
 </html>
